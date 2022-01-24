@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+
+<sdbm>
+
+    <entity id="post">
+        <name>Post</name>
+        <attribute>
+            <name>title</name>
+            <type>String</type>
+        </attribute>
+        <attribute>
+            <name>body</name>
+            <type>String</type>
+        </attribute>
+    </entity>
+
+    <relation>
+        <one id="post"></one>
+        <one id="post_meta"></one>
+    </relation>
+
+    <entity id="post_meta">
+        <name>Post Meta</name>
+        <attribute>
+            <name>author</name>
+            <type>String</type>
+        </attribute>
+    </entity>
+
+</sdbm>
