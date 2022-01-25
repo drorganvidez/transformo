@@ -10,19 +10,35 @@ class Relation:
         self.many_1 = None
         self.many_2 = None
 
-        self.__get_value(item = item, attribute = "one_1", type = "one")
-        print("one_1", self.one_1)
+        self.__get_value(item = item, type = "one")
 
-        self.__get_value(item = item, attribute = "one_2", type = "one")
-        print("one_2", self.one_2)
+        self.__get_value(item = item, type = "one")
 
-        self.__get_value(item = item, attribute = "many_1", type = "many")
-        print("many_1", self.many_1)
+        self.__get_value(item = item, type = "many")
 
-        self.__get_value(item = item, attribute = "many_2", type = "many")
-        print("many_2", self.many_2)
+        self.__get_value(item = item, type = "many")
 
-    def __get_value(self, item, attribute, type):
+    def __check_max_counter(self):
+        counter = 0
+
+        if (self.one_1 != None):
+            counter = counter + 1
+
+        if (self.one_2 != None):
+            counter = counter + 1
+
+        if (self.many_1 != None):
+            counter = counter + 1
+
+        if (self.many_2 != None):
+            counter = counter + 1
+
+        return counter == 2
+
+    def __get_value(self, item, type):
+
+        if(self.__check_max_counter()):
+            return
 
         ones_manies = item.getElementsByTagName(type)
 
@@ -44,3 +60,31 @@ class Relation:
             if type == "many":
                 setattr(self, "many_1", item.getElementsByTagName(type)[0].getAttribute('id') )
 
+    def __str__(self) -> str:
+
+        string = "Relation: "
+        counter = 0
+
+        if( self.one_1 != None):
+            counter = counter + 1
+            string = string + "one (" + self.one_1 + ") "
+        
+        if( self.one_2 != None):
+            if (counter == 1):
+                string = string + "to "
+            counter = counter + 1
+            string = string + "one (" + self.one_2 + ") "
+
+        if( self.many_1 != None):
+            if (counter == 1):
+                string = string + "to "
+            counter = counter + 1
+            string = string + "many (" + self.many_1 + ") "
+
+        if( self.many_2 != None):
+            if (counter == 1):
+                string = string + "to "
+            counter = counter + 1
+            string = string + "many (" + self.many_2 + ") "
+
+        return string

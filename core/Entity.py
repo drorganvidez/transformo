@@ -8,18 +8,20 @@ class Entity:
 
         self.name = item.getElementsByTagName("name")[0].childNodes[0].data
 
-        print("name: ", self.name)
+        self.attributes_items = []
 
-        self.get_attributes(item.getElementsByTagName("attribute"))
+        self.__read_attributes(item.getElementsByTagName("attribute"))
 
-    def get_attributes(self, attribute_items) -> list[Attribute]:
-
-        list_attribute = []
+    def __read_attributes(self, attribute_items):
 
         for a in attribute_items:
 
             attribute = Attribute(a)
 
-            list_attribute.append(attribute)
+            self.attributes_items.append(attribute)
 
-        return list_attribute
+    def attributes(self):
+        return self.attributes_items
+
+    def __str__(self) -> str:
+        return "Entity: " + self.name

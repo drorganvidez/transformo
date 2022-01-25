@@ -11,24 +11,28 @@ class SDBMReader:
         
         doc = minidom.parse(file)
 
-        self.get_entities(doc)
+        self.entities_items = []
+        self.relations_items = []
 
-        self.get_relations(doc)
+        self.__read_entities(doc)
+        self.__read_relations(doc)
 
-    def get_entities(self, doc) -> list[Entity]:
+    def __read_entities(self, doc):
         items = doc.getElementsByTagName('entity')
-        list_entities = []
+
         for i in items:
             entity = Entity(i)
-            list_entities.append(entity)
+            self.entities_items.append(entity)
 
-        return list_entities
+    def entities(self):
+        return self.entities_items
 
-    def get_relations(self, doc) -> list[Relation]:
+    def __read_relations(self, doc) -> list[Relation]:
         items = doc.getElementsByTagName('relation')
-        list_relation = []
+
         for i in items:
             relation = Relation(i)
-            list_relation.append(relation)
+            self.relations_items.append(relation)
 
-        return list_relation
+    def relations(self):
+        return self.relations_items

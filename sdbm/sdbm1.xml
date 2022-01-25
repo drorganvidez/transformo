@@ -15,7 +15,7 @@
     </entity>
 
     <relation>
-        <one id="post"></one>
+        <many id="post"></many>
         <one id="post_meta"></one>
     </relation>
 
