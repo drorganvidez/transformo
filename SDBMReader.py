@@ -36,3 +36,22 @@ class SDBMReader:
 
     def relations(self):
         return self.relations_items
+
+    def print(self) -> str:
+
+        print()
+
+        print(self.file)
+        
+        for e in self.entities():
+            print(e)
+
+            for attr in e.attributes():
+                print("\t" + str(attr))
+
+            print()
+
+        for r in self.relations():
+            print(r)
+
+        print()

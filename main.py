@@ -2,16 +2,13 @@ from SDBMReader import SDBMReader
 
 def main():
 
-    reader = SDBMReader("sdbm/sdbm1.xml")
+    reader_1 = SDBMReader("sdbm/sdbm1.xml")
 
-    for e in reader.entities():
-        print(e)
+    reader_1.print()
 
-        for attr in e.attributes():
-            print(attr)
+    reader_2 = SDBMReader("sdbm/sdbm2.xml")
 
-    for r in reader.relations():
-        print(r)
+    reader_2.print()
 
 
 main()

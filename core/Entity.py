@@ -8,6 +8,8 @@ class Entity:
 
         self.name = item.getElementsByTagName("name")[0].childNodes[0].data
 
+        self.id = item.getAttribute('id')
+
         self.attributes_items = []
 
         self.__read_attributes(item.getElementsByTagName("attribute"))
@@ -24,4 +26,4 @@ class Entity:
         return self.attributes_items
 
     def __str__(self) -> str:
-        return "Entity: " + self.name
+        return "Entity: " + self.name + " (id = \"" + self.id + "\", number of attributes = " +str(len(self.attributes())) + ")"

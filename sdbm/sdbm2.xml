@@ -12,15 +12,6 @@
             <name>body</name>
             <type>String</type>
         </attribute>
-    </entity>
-
-    <relation>
-        <many id="post"></many>
-        <one id="post_meta"></one>
-    </relation>
-
-    <entity id="post_meta">
-        <name>PostMeta</name>
         <attribute>
             <name>author</name>
             <type>String</type>
