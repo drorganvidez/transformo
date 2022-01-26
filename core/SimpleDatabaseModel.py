@@ -4,7 +4,7 @@ from xml.dom import minidom
 from core.Entity import Entity
 from core.Relation import Relation
 
-class SDBMReader:
+class SimpleDatabaseModel:
 
     def __init__(self, file):
         self.file = file

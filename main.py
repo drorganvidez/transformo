@@ -1,14 +1,14 @@
-from SDBMReader import SDBMReader
+from core.SimpleDatabaseModel import SimpleDatabaseModel
 
 def main():
 
-    reader_1 = SDBMReader("sdbm/sdbm1.xml")
+    sdm1 = SimpleDatabaseModel("sdm/sdm1.xml")
 
-    reader_1.print()
+    sdm1.print()
 
-    reader_2 = SDBMReader("sdbm/sdbm2.xml")
+    sdm2 = SimpleDatabaseModel("sdm/sdm2.xml")
 
-    reader_2.print()
+    sdm2.print()
 
 
 main()

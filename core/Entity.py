@@ -22,6 +22,12 @@ class Entity:
 
             self.attributes_items.append(attribute)
 
+    def name(self) -> str:
+        return self.name
+    
+    def id(self) -> str:
+        return self.id
+
     def attributes(self):
         return self.attributes_items
 
