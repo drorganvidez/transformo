@@ -17,6 +17,10 @@ class SimpleDatabaseModel:
         self.__read_entities(doc)
         self.__read_relations(doc)
 
+        # TODO: Emparejar relaciones y entidades.
+        # Desde una relación, debo poder consultar ambas entidades y la cardinalidad
+        # Desde una entidad, debo poder consultar la relación con el resto de entidades
+
     def __read_entities(self, doc):
         items = doc.getElementsByTagName('entity')
 

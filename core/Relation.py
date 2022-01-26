@@ -18,6 +18,8 @@ class Relation:
 
         self.__get_value(item = item, type = "many")
 
+        # TODO: Lanzar excepción si no hay exactamente dos entidades
+
     def __check_max_counter(self):
         counter = 0
 
@@ -59,6 +61,11 @@ class Relation:
 
             if type == "many":
                 setattr(self, "many_1", item.getElementsByTagName(type)[0].getAttribute('id') )
+
+
+    # TODO: Pasar la lista de entidades, emparejarlas según el id y settear los atributos
+    def set_entities(self, entities):
+        pass
 
     def __str__(self) -> str:
 
