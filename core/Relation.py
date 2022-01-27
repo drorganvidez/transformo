@@ -10,15 +10,18 @@ class Relation:
         self.many_1 = None
         self.many_2 = None
 
-        self.__get_value(item = item, type = "one")
+        self.__first_entity = None
+        self.__second_entity = None
+
+        self.__first_entity_cardinality = None
+        self.__second_entity_cardinality = None
 
         self.__get_value(item = item, type = "one")
 
         self.__get_value(item = item, type = "many")
 
-        self.__get_value(item = item, type = "many")
-
-        # TODO: Lanzar excepción si no hay exactamente dos entidades
+        if(not self.__check_max_counter()):
+            raise('There must be exactly two entities involved in a relation')
 
     def __check_max_counter(self):
         counter = 0
@@ -38,9 +41,6 @@ class Relation:
         return counter == 2
 
     def __get_value(self, item, type):
-
-        if(self.__check_max_counter()):
-            return
 
         ones_manies = item.getElementsByTagName(type)
 
@@ -62,36 +62,65 @@ class Relation:
             if type == "many":
                 setattr(self, "many_1", item.getElementsByTagName(type)[0].getAttribute('id') )
 
-
-    # TODO: Pasar la lista de entidades, emparejarlas según el id y settear los atributos
     def set_entities(self, entities):
-        pass
+        
+        max_entity = 0
+
+        for e in entities:
+
+            if(self.one_1 == e.id()):
+
+                max_entity = self.__associate_entity(entity = e, cardinality = "one", max_entity = max_entity)
+
+            if(self.one_2 == e.id()):
+
+                max_entity = self.__associate_entity(entity = e, cardinality = "one", max_entity = max_entity)
+
+            if(self.many_1 == e.id()):
+
+                max_entity = self.__associate_entity(entity = e, cardinality = "many", max_entity = max_entity)
+
+            if(self.many_2 == e.id()):
+
+                max_entity = self.__associate_entity(entity = e, cardinality = "many", max_entity = max_entity)
+
+        if not max_entity == 2:
+            raise('One or more relations could not be created. Check the identifiers.')
+
+    def __associate_entity(self, entity, cardinality, max_entity):
+
+        if max_entity == 0:
+            self.__first_entity = entity
+            self.__first_entity_cardinality = cardinality
+
+        if max_entity == 1:
+            self.__second_entity = entity
+            self.__second_entity_cardinality = cardinality
+
+        max_entity = max_entity + 1
+
+        return max_entity
+
+    def first_entity(self):
+        return self.__first_entity
+
+    def first_entity_cardinality(self):
+        return self.__first_entity_cardinality
+
+    def second_entity(self):
+        return self.__second_entity
+
+    def second_entity_cardinality(self):
+        return self.__second_entity_cardinality
 
     def __str__(self) -> str:
 
         string = "Relation: "
-        counter = 0
 
-        if( self.one_1 != None):
-            counter = counter + 1
-            string = string + "one (" + self.one_1 + ") "
-        
-        if( self.one_2 != None):
-            if (counter == 1):
-                string = string + "to "
-            counter = counter + 1
-            string = string + "one (" + self.one_2 + ") "
+        string = string + str(self.__first_entity_cardinality) + "(" + str(self.__first_entity.name()) + ")"
 
-        if( self.many_1 != None):
-            if (counter == 1):
-                string = string + "to "
-            counter = counter + 1
-            string = string + "many (" + self.many_1 + ") "
+        string = string + " to "
 
-        if( self.many_2 != None):
-            if (counter == 1):
-                string = string + "to "
-            counter = counter + 1
-            string = string + "many (" + self.many_2 + ") "
+        string = string + str(self.__second_entity_cardinality) + "(" + str(self.__second_entity.name()) + ")"
 
         return string

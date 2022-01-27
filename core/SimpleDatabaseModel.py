@@ -17,9 +17,7 @@ class SimpleDatabaseModel:
         self.__read_entities(doc)
         self.__read_relations(doc)
 
-        # TODO: Emparejar relaciones y entidades.
-        # Desde una relación, debo poder consultar ambas entidades y la cardinalidad
-        # Desde una entidad, debo poder consultar la relación con el resto de entidades
+        self.match_relation_and_entities()
 
     def __read_entities(self, doc):
         items = doc.getElementsByTagName('entity')
@@ -38,6 +36,14 @@ class SimpleDatabaseModel:
             relation = Relation(i)
             self.relations_items.append(relation)
 
+    def match_relation_and_entities(self):
+
+        for r in self.relations_items:
+            r.set_entities(self.entities_items)
+
+        for e in self.entities_items:
+            e.set_relations(self.relations_items)
+
     def relations(self):
         return self.relations_items
 
@@ -48,13 +54,24 @@ class SimpleDatabaseModel:
         print(self.file)
         
         for e in self.entities():
+
             print(e)
+
+            print("\n\t-- Attributes --")
 
             for attr in e.attributes():
                 print("\t" + str(attr))
 
             print()
 
+            print("\t-- Related entities --")
+
+            for relation in e.relations():
+                print("\t" + str(relation))
+
+            print()
+
+        print("-- All relations --")
         for r in self.relations():
             print(r)
 

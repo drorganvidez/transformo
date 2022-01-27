@@ -6,9 +6,5 @@ def main():
 
     sdm1.print()
 
-    sdm2 = SimpleDatabaseModel("sdm/sdm2.xml")
-
-    sdm2.print()
-
 
 main()
