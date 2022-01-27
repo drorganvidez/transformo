@@ -1,6 +1,6 @@
 from core.SimpleDatabaseModel import SimpleDatabaseModel
 
-def test_ecursion():
+def test_recursion():
 
     sdm1 = SimpleDatabaseModel("sdm/sdm1.xml")
 
@@ -39,5 +39,5 @@ def test_properties():
         print("end related_entities")
         print()
 
-#test_ecursion()
+#test_recursion()
 test_properties()

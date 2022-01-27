@@ -66,8 +66,8 @@ class SimpleDatabaseModel:
 
             print("\t-- Related entities --")
 
-            for relation in e.relations():
-                print("\t" + str(relation))
+            for re in e.related_entities():
+                print("\t" + str(re))
 
             print()
 
