@@ -1,4 +1,5 @@
-from core.SimpleDatabaseModel import SimpleDatabaseModel
+from core.mysql.MySQLExtractor import MySQLExtractor
+from core.sdm.SimpleDatabaseModel import SimpleDatabaseModel
 
 def test_recursion():
 
@@ -39,5 +40,15 @@ def test_properties():
         print("end related_entities")
         print()
 
+def test_mysql_extractor():
+
+    env = ["host", "database", "user", "password"]
+
+    mysql_extractor = MySQLExtractor(env)
+
+    mysql_extractor.extract()
+
 #test_recursion()
-test_properties()
+#test_properties()
+
+test_mysql_extractor()

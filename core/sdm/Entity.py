@@ -1,4 +1,4 @@
-from core.Attribute import Attribute
+from core.sdm.Attribute import Attribute
 
 
 class Entity:

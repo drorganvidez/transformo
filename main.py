@@ -1,4 +1,4 @@
-from core.SimpleDatabaseModel import SimpleDatabaseModel
+from core.sdm.SimpleDatabaseModel import SimpleDatabaseModel
 
 def main():
 

@@ -1,6 +1,3 @@
-from turtle import st
-
-
 class Attribute:
 
     def __init__(self, attribute_item):

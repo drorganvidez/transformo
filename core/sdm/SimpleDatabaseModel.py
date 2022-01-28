@@ -1,8 +1,8 @@
 from typing import List
 from xml.dom import minidom
 
-from core.Entity import Entity
-from core.Relation import Relation
+from core.sdm.Entity import Entity
+from core.sdm.Relation import Relation
 
 class SimpleDatabaseModel:
 
