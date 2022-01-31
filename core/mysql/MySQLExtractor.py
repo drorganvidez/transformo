@@ -2,6 +2,9 @@ import os
 from dotenv import load_dotenv
 import mysql.connector
 import re
+from mysql.connector import FieldType
+
+from core.mysql.Table import Table
 
 class MySQLExtractor:
 
@@ -17,7 +20,7 @@ class MySQLExtractor:
         self.__user = os.getenv(env[2])
         self.__password = os.getenv(env[3])
 
-        self.__tables_names = []
+        self.__tables = []
 
         mydb = self.connect()
         mydb.close()
@@ -27,7 +30,7 @@ class MySQLExtractor:
 
     def extract(self):
         self.extract_tables_names()
-        
+        self.extract_columns()
 
     def extract_tables_names(self):
 
@@ -38,7 +41,26 @@ class MySQLExtractor:
         cursor.execute("SHOW TABLES")
 
         for (table_name,) in cursor:
-            self.__tables_names.append(table_name)
-            print(table_name)
+            table = Table(table_name = table_name)
+            self.__tables.append(table)
 
         mydb.close()
+
+    def extract_columns(self):
+
+        mydb = self.connect()
+    
+        cursor = mydb.cursor()
+
+        for table in self.__tables:
+
+            cursor.execute("DESCRIBE " + table.name())
+
+            bulk_column_data = cursor.fetchall()
+
+            table.set_columns(bulk_column_data)
+
+        mydb.close()
+
+    def tables(self):
+        return self.__tables

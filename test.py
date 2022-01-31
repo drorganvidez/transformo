@@ -48,6 +48,9 @@ def test_mysql_extractor():
 
     mysql_extractor.extract()
 
+    for table in mysql_extractor.tables():
+        print(table)
+
 #test_recursion()
 #test_properties()
 
