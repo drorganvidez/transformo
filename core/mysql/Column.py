@@ -1,3 +1,5 @@
+import re
+
 class Column:
 
     def __init__(self, column_data) -> None:
@@ -15,7 +17,8 @@ class Column:
         return self.__field
 
     def type(self):
-        return self.__type
+        res = re.findall(r"'(.*?)'", str(self.__type), re.DOTALL)
+        return res[0]
 
     def is_null(self):
         return self.__null == 'YES'

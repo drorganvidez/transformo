@@ -1,0 +1,4 @@
+
+        <attribute>
+            <name>{attribute_name}</name>
+            <type>{attribute_type}</type>

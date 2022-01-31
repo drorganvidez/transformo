@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 
-<sdbm>
+<sdm>
 
     <entity id="post">
         <name>Post</name>
@@ -27,4 +27,4 @@
         <many id="post_meta"></many>
     </relation>
 
-</sdbm>
+</sdm>

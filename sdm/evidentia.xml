@@ -1,0 +1,985 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+
+<sdm>
+        
+    <entity id="agreements_id">
+        <name>agreements</name>
+        <attribute>
+            <name>id</name>
+            <type>bigint unsigned</type>
+        </attribute>
+        <attribute>
+            <name>point_id</name>
+            <type>bigint unsigned</type>
+        </attribute>
+        <attribute>
+            <name>identificator</name>
+            <type>varchar(255)</type>
+        </attribute>
+        <attribute>
+            <name>description</name>
+            <type>text</type>
+        </attribute>
+        <attribute>
+            <name>created_at</name>
+            <type>timestamp</type>
+        </attribute>
+        <attribute>
+            <name>updated_at</name>
+            <type>timestamp</type>
+        </attribute>        
+    </entity>
+                
+    <entity id="attendee_id">
+        <name>attendee</name>
+        <attribute>
+            <name>id</name>
+            <type>bigint unsigned</type>
+        </attribute>
+        <attribute>
+            <name>event_id</name>
+            <type>bigint unsigned</type>
+        </attribute>
+        <attribute>
+            <name>user_id</name>
+            <type>bigint unsigned</type>
+        </attribute>
+        <attribute>
+            <name>status</name>
+            <type>Attending</type>
+        </attribute>
+        <attribute>
+            <name>created_at</name>
+            <type>timestamp</type>
+        </attribute>
+        <attribute>
+            <name>updated_at</name>
+            <type>timestamp</type>
+        </attribute>        
+    </entity>
+                
+    <entity id="avatar_id">
+        <name>avatar</name>
+        <attribute>
+            <name>id</name>
+            <type>bigint unsigned</type>
+        </attribute>
+        <attribute>
+            <name>user_id</name>
+            <type>bigint unsigned</type>
+        </attribute>
+        <attribute>
+            <name>file_id</name>
+            <type>bigint unsigned</type>
+        </attribute>
+        <attribute>
+            <name>created_at</name>
+            <type>timestamp</type>
+        </attribute>
+        <attribute>
+            <name>updated_at</name>
+            <type>timestamp</type>
+        </attribute>        
+    </entity>
+                
+    <entity id="bonus_id">
+        <name>bonus</name>
+        <attribute>
+            <name>id</name>
+            <type>bigint unsigned</type>
+        </attribute>
+        <attribute>
+            <name>comittee_id</name>
+            <type>bigint unsigned</type>
+        </attribute>
+        <attribute>
+            <name>reason</name>
+            <type>varchar(255)</type>
+        </attribute>
+        <attribute>
+            <name>hours</name>
+            <type>int</type>
+        </attribute>
+        <attribute>
+            <name>created_at</name>
+            <type>timestamp</type>
+        </attribute>
+        <attribute>
+            <name>updated_at</name>
+            <type>timestamp</type>
+        </attribute>        
+    </entity>
+                
+    <entity id="bonus_user_id">
+        <name>bonus_user</name>
+        <attribute>
+            <name>id</name>
+            <type>bigint unsigned</type>
+        </attribute>
+        <attribute>
+            <name>bonus_id</name>
+            <type>bigint unsigned</type>
+        </attribute>
+        <attribute>
+            <name>user_id</name>
+            <type>bigint unsigned</type>
+        </attribute>
+        <attribute>
+            <name>created_at</name>
+            <type>timestamp</type>
+        </attribute>
+        <attribute>
+            <name>updated_at</name>
+            <type>timestamp</type>
+        </attribute>        
+    </entity>
+                
+    <entity id="comittees_id">
+        <name>comittees</name>
+        <attribute>
+            <name>id</name>
+            <type>bigint unsigned</type>
+        </attribute>
+        <attribute>
+            <name>name</name>
+            <type>varchar(255)</type>
+        </attribute>
+        <attribute>
+            <name>icon</name>
+            <type>varchar(255)</type>
+        </attribute>
+        <attribute>
+            <name>created_at</name>
+            <type>timestamp</type>
+        </attribute>
+        <attribute>
+            <name>updated_at</name>
+            <type>timestamp</type>
+        </attribute>        
+    </entity>
+                
+    <entity id="configuration_id">
+        <name>configuration</name>
+        <attribute>
+            <name>id</name>
+            <type>bigint unsigned</type>
+        </attribute>
+        <attribute>
+            <name>max_attachment_number</name>
+            <type>int</type>
+        </attribute>
+        <attribute>
+            <name>max_attachment_size</name>
+            <type>int</type>
+        </attribute>
+        <attribute>
+            <name>max_proof_number</name>
+            <type>int</type>
+        </attribute>
+        <attribute>
+            <name>max_proof_size</name>
+            <type>int</type>
+        </attribute>
+        <attribute>
+            <name>max_evidence_number</name>
+            <type>int</type>
+        </attribute>
+        <attribute>
+            <name>max_assist_number</name>
+            <type>int</type>
+        </attribute>
+        <attribute>
+            <name>max_attendees_hours</name>
+            <type>int</type>
+        </attribute>
+        <attribute>
+            <name>upload_evidences_timestamp</name>
+            <type>timestamp</type>
+        </attribute>
+        <attribute>
+            <name>validate_evidences_timestamp</name>
+            <type>timestamp</type>
+        </attribute>
+        <attribute>
+            <name>meetings_timestamp</name>
+            <type>timestamp</type>
+        </attribute>
+        <attribute>
+            <name>bonus_timestamp</name>
+            <type>timestamp</type>
+        </attribute>
+        <attribute>
+            <name>attendee_timestamp</name>
+            <type>timestamp</type>
+        </attribute>
+        <attribute>
+            <name>events_uploaded_timestamp</name>
+            <type>timestamp</type>
+        </attribute>
+        <attribute>
+            <name>attendees_uploaded_timestamp</name>
+            <type>timestamp</type>
+        </attribute>
+        <attribute>
+            <name>secret</name>
+            <type>varchar(255)</type>
+        </attribute>
+        <attribute>
+            <name>eventbrite_token</name>
+            <type>varchar(255)</type>
+        </attribute>
+        <attribute>
+            <name>created_at</name>
+            <type>timestamp</type>
+        </attribute>
+        <attribute>
+            <name>updated_at</name>
+            <type>timestamp</type>
+        </attribute>        
+    </entity>
+                
+    <entity id="coordinators_id">
+        <name>coordinators</name>
+        <attribute>
+            <name>id</name>
+            <type>bigint unsigned</type>
+        </attribute>
+        <attribute>
+            <name>created_at</name>
+            <type>timestamp</type>
+        </attribute>
+        <attribute>
+            <name>updated_at</name>
+            <type>timestamp</type>
+        </attribute>
+        <attribute>
+            <name>comittee_id</name>
+            <type>bigint unsigned</type>
+        </attribute>
+        <attribute>
+            <name>user_id</name>
+            <type>bigint unsigned</type>
+        </attribute>        
+    </entity>
+                
+    <entity id="default_list_user_id">
+        <name>default_list_user</name>
+        <attribute>
+            <name>id</name>
+            <type>bigint unsigned</type>
+        </attribute>
+        <attribute>
+            <name>user_id</name>
+            <type>bigint unsigned</type>
+        </attribute>
+        <attribute>
+            <name>default_list_id</name>
+            <type>bigint unsigned</type>
+        </attribute>
+        <attribute>
+            <name>created_at</name>
+            <type>timestamp</type>
+        </attribute>
+        <attribute>
+            <name>updated_at</name>
+            <type>timestamp</type>
+        </attribute>        
+    </entity>
+                
+    <entity id="defaultlist_id">
+        <name>defaultlist</name>
+        <attribute>
+            <name>id</name>
+            <type>bigint unsigned</type>
+        </attribute>
+        <attribute>
+            <name>name</name>
+            <type>varchar(255)</type>
+        </attribute>
+        <attribute>
+            <name>secretary_id</name>
+            <type>bigint unsigned</type>
+        </attribute>
+        <attribute>
+            <name>created_at</name>
+            <type>timestamp</type>
+        </attribute>
+        <attribute>
+            <name>updated_at</name>
+            <type>timestamp</type>
+        </attribute>        
+    </entity>
+                
+    <entity id="diaries_id">
+        <name>diaries</name>
+        <attribute>
+            <name>id</name>
+            <type>bigint unsigned</type>
+        </attribute>
+        <attribute>
+            <name>meeting_request_id</name>
+            <type>bigint unsigned</type>
+        </attribute>
+        <attribute>
+            <name>created_at</name>
+            <type>timestamp</type>
+        </attribute>
+        <attribute>
+            <name>updated_at</name>
+            <type>timestamp</type>
+        </attribute>        
+    </entity>
+                
+    <entity id="diary_points_id">
+        <name>diary_points</name>
+        <attribute>
+            <name>id</name>
+            <type>bigint unsigned</type>
+        </attribute>
+        <attribute>
+            <name>diary_id</name>
+            <type>bigint unsigned</type>
+        </attribute>
+        <attribute>
+            <name>point</name>
+            <type>varchar(255)</type>
+        </attribute>
+        <attribute>
+            <name>created_at</name>
+            <type>timestamp</type>
+        </attribute>
+        <attribute>
+            <name>updated_at</name>
+            <type>timestamp</type>
+        </attribute>        
+    </entity>
+                
+    <entity id="event_id">
+        <name>event</name>
+        <attribute>
+            <name>id</name>
+            <type>bigint unsigned</type>
+        </attribute>
+        <attribute>
+            <name>name</name>
+            <type>varchar(255)</type>
+        </attribute>
+        <attribute>
+            <name>description</name>
+            <type>varchar(255)</type>
+        </attribute>
+        <attribute>
+            <name>id_eventbrite</name>
+            <type>varchar(255)</type>
+        </attribute>
+        <attribute>
+            <name>start_datetime</name>
+            <type>timestamp</type>
+        </attribute>
+        <attribute>
+            <name>end_datetime</name>
+            <type>timestamp</type>
+        </attribute>
+        <attribute>
+            <name>capacity</name>
+            <type>int</type>
+        </attribute>
+        <attribute>
+            <name>status</name>
+            <type>draft</type>
+        </attribute>
+        <attribute>
+            <name>url</name>
+            <type>varchar(255)</type>
+        </attribute>
+        <attribute>
+            <name>hours</name>
+            <type>double(8,2)</type>
+        </attribute>
+        <attribute>
+            <name>created_at</name>
+            <type>timestamp</type>
+        </attribute>
+        <attribute>
+            <name>updated_at</name>
+            <type>timestamp</type>
+        </attribute>        
+    </entity>
+                
+    <entity id="evidences_id">
+        <name>evidences</name>
+        <attribute>
+            <name>id</name>
+            <type>bigint unsigned</type>
+        </attribute>
+        <attribute>
+            <name>user_id</name>
+            <type>bigint unsigned</type>
+        </attribute>
+        <attribute>
+            <name>comittee_id</name>
+            <type>bigint unsigned</type>
+        </attribute>
+        <attribute>
+            <name>title</name>
+            <type>varchar(255)</type>
+        </attribute>
+        <attribute>
+            <name>description</name>
+            <type>text</type>
+        </attribute>
+        <attribute>
+            <name>hours</name>
+            <type>double(8,2)</type>
+        </attribute>
+        <attribute>
+            <name>points_to</name>
+            <type>int</type>
+        </attribute>
+        <attribute>
+            <name>status</name>
+            <type>DRAFT</type>
+        </attribute>
+        <attribute>
+            <name>stamp</name>
+            <type>varchar(255)</type>
+        </attribute>
+        <attribute>
+            <name>last</name>
+            <type>tinyint(1)</type>
+        </attribute>
+        <attribute>
+            <name>rand</name>
+            <type>tinyint(1)</type>
+        </attribute>
+        <attribute>
+            <name>created_at</name>
+            <type>timestamp</type>
+        </attribute>
+        <attribute>
+            <name>updated_at</name>
+            <type>timestamp</type>
+        </attribute>        
+    </entity>
+                
+    <entity id="files_id">
+        <name>files</name>
+        <attribute>
+            <name>id</name>
+            <type>bigint unsigned</type>
+        </attribute>
+        <attribute>
+            <name>name</name>
+            <type>varchar(255)</type>
+        </attribute>
+        <attribute>
+            <name>size</name>
+            <type>int</type>
+        </attribute>
+        <attribute>
+            <name>type</name>
+            <type>varchar(255)</type>
+        </attribute>
+        <attribute>
+            <name>route</name>
+            <type>varchar(255)</type>
+        </attribute>
+        <attribute>
+            <name>stamp</name>
+            <type>varchar(255)</type>
+        </attribute>
+        <attribute>
+            <name>created_at</name>
+            <type>timestamp</type>
+        </attribute>
+        <attribute>
+            <name>updated_at</name>
+            <type>timestamp</type>
+        </attribute>        
+    </entity>
+                
+    <entity id="meeting_id">
+        <name>meeting</name>
+        <attribute>
+            <name>id</name>
+            <type>bigint unsigned</type>
+        </attribute>
+        <attribute>
+            <name>comittee_id</name>
+            <type>bigint unsigned</type>
+        </attribute>
+        <attribute>
+            <name>title</name>
+            <type>varchar(255)</type>
+        </attribute>
+        <attribute>
+            <name>datetime</name>
+            <type>timestamp</type>
+        </attribute>
+        <attribute>
+            <name>place</name>
+            <type>varchar(255)</type>
+        </attribute>
+        <attribute>
+            <name>type</name>
+            <type>ORDINARY</type>
+        </attribute>
+        <attribute>
+            <name>modality</name>
+            <type>F2F</type>
+        </attribute>
+        <attribute>
+            <name>hours</name>
+            <type>double(8,2)</type>
+        </attribute>
+        <attribute>
+            <name>created_at</name>
+            <type>timestamp</type>
+        </attribute>
+        <attribute>
+            <name>updated_at</name>
+            <type>timestamp</type>
+        </attribute>        
+    </entity>
+                
+    <entity id="meeting_minutes_id">
+        <name>meeting_minutes</name>
+        <attribute>
+            <name>id</name>
+            <type>bigint unsigned</type>
+        </attribute>
+        <attribute>
+            <name>meeting_id</name>
+            <type>bigint unsigned</type>
+        </attribute>
+        <attribute>
+            <name>secretary_id</name>
+            <type>bigint unsigned</type>
+        </attribute>
+        <attribute>
+            <name>created_at</name>
+            <type>timestamp</type>
+        </attribute>
+        <attribute>
+            <name>updated_at</name>
+            <type>timestamp</type>
+        </attribute>        
+    </entity>
+                
+    <entity id="meeting_requests_id">
+        <name>meeting_requests</name>
+        <attribute>
+            <name>id</name>
+            <type>bigint unsigned</type>
+        </attribute>
+        <attribute>
+            <name>title</name>
+            <type>varchar(255)</type>
+        </attribute>
+        <attribute>
+            <name>datetime</name>
+            <type>timestamp</type>
+        </attribute>
+        <attribute>
+            <name>place</name>
+            <type>varchar(255)</type>
+        </attribute>
+        <attribute>
+            <name>type</name>
+            <type>ORDINARY</type>
+        </attribute>
+        <attribute>
+            <name>modality</name>
+            <type>F2F</type>
+        </attribute>
+        <attribute>
+            <name>comittee_id</name>
+            <type>bigint unsigned</type>
+        </attribute>
+        <attribute>
+            <name>secretary_id</name>
+            <type>bigint unsigned</type>
+        </attribute>
+        <attribute>
+            <name>created_at</name>
+            <type>timestamp</type>
+        </attribute>
+        <attribute>
+            <name>updated_at</name>
+            <type>timestamp</type>
+        </attribute>        
+    </entity>
+                
+    <entity id="meeting_user_id">
+        <name>meeting_user</name>
+        <attribute>
+            <name>id</name>
+            <type>bigint unsigned</type>
+        </attribute>
+        <attribute>
+            <name>meeting_id</name>
+            <type>bigint unsigned</type>
+        </attribute>
+        <attribute>
+            <name>user_id</name>
+            <type>bigint unsigned</type>
+        </attribute>
+        <attribute>
+            <name>created_at</name>
+            <type>timestamp</type>
+        </attribute>
+        <attribute>
+            <name>updated_at</name>
+            <type>timestamp</type>
+        </attribute>        
+    </entity>
+                
+    <entity id="migrations_id">
+        <name>migrations</name>
+        <attribute>
+            <name>id</name>
+            <type>int unsigned</type>
+        </attribute>
+        <attribute>
+            <name>migration</name>
+            <type>varchar(255)</type>
+        </attribute>
+        <attribute>
+            <name>batch</name>
+            <type>int</type>
+        </attribute>        
+    </entity>
+                
+    <entity id="points_id">
+        <name>points</name>
+        <attribute>
+            <name>id</name>
+            <type>bigint unsigned</type>
+        </attribute>
+        <attribute>
+            <name>meeting_minutes_id</name>
+            <type>bigint unsigned</type>
+        </attribute>
+        <attribute>
+            <name>title</name>
+            <type>varchar(255)</type>
+        </attribute>
+        <attribute>
+            <name>duration</name>
+            <type>int</type>
+        </attribute>
+        <attribute>
+            <name>description</name>
+            <type>text</type>
+        </attribute>
+        <attribute>
+            <name>created_at</name>
+            <type>timestamp</type>
+        </attribute>
+        <attribute>
+            <name>updated_at</name>
+            <type>timestamp</type>
+        </attribute>        
+    </entity>
+                
+    <entity id="proofs_id">
+        <name>proofs</name>
+        <attribute>
+            <name>id</name>
+            <type>bigint unsigned</type>
+        </attribute>
+        <attribute>
+            <name>evidence_id</name>
+            <type>bigint unsigned</type>
+        </attribute>
+        <attribute>
+            <name>file_id</name>
+            <type>bigint unsigned</type>
+        </attribute>
+        <attribute>
+            <name>created_at</name>
+            <type>timestamp</type>
+        </attribute>
+        <attribute>
+            <name>updated_at</name>
+            <type>timestamp</type>
+        </attribute>        
+    </entity>
+                
+    <entity id="reason_rejection_id">
+        <name>reason_rejection</name>
+        <attribute>
+            <name>id</name>
+            <type>bigint unsigned</type>
+        </attribute>
+        <attribute>
+            <name>evidence_id</name>
+            <type>bigint unsigned</type>
+        </attribute>
+        <attribute>
+            <name>reason</name>
+            <type>varchar(255)</type>
+        </attribute>
+        <attribute>
+            <name>created_at</name>
+            <type>timestamp</type>
+        </attribute>
+        <attribute>
+            <name>updated_at</name>
+            <type>timestamp</type>
+        </attribute>        
+    </entity>
+                
+    <entity id="role_user_id">
+        <name>role_user</name>
+        <attribute>
+            <name>id</name>
+            <type>bigint unsigned</type>
+        </attribute>
+        <attribute>
+            <name>role_id</name>
+            <type>bigint unsigned</type>
+        </attribute>
+        <attribute>
+            <name>user_id</name>
+            <type>bigint unsigned</type>
+        </attribute>
+        <attribute>
+            <name>created_at</name>
+            <type>timestamp</type>
+        </attribute>
+        <attribute>
+            <name>updated_at</name>
+            <type>timestamp</type>
+        </attribute>        
+    </entity>
+                
+    <entity id="roles_id">
+        <name>roles</name>
+        <attribute>
+            <name>id</name>
+            <type>bigint unsigned</type>
+        </attribute>
+        <attribute>
+            <name>rol</name>
+            <type>LECTURE</type>
+        </attribute>
+        <attribute>
+            <name>slug</name>
+            <type>varchar(255)</type>
+        </attribute>
+        <attribute>
+            <name>created_at</name>
+            <type>timestamp</type>
+        </attribute>
+        <attribute>
+            <name>updated_at</name>
+            <type>timestamp</type>
+        </attribute>        
+    </entity>
+                
+    <entity id="secretaries_id">
+        <name>secretaries</name>
+        <attribute>
+            <name>id</name>
+            <type>bigint unsigned</type>
+        </attribute>
+        <attribute>
+            <name>created_at</name>
+            <type>timestamp</type>
+        </attribute>
+        <attribute>
+            <name>updated_at</name>
+            <type>timestamp</type>
+        </attribute>
+        <attribute>
+            <name>comittee_id</name>
+            <type>bigint unsigned</type>
+        </attribute>
+        <attribute>
+            <name>user_id</name>
+            <type>bigint unsigned</type>
+        </attribute>        
+    </entity>
+                
+    <entity id="signature_sheet_user_id">
+        <name>signature_sheet_user</name>
+        <attribute>
+            <name>id</name>
+            <type>bigint unsigned</type>
+        </attribute>
+        <attribute>
+            <name>signature_sheet_id</name>
+            <type>bigint unsigned</type>
+        </attribute>
+        <attribute>
+            <name>user_id</name>
+            <type>bigint unsigned</type>
+        </attribute>
+        <attribute>
+            <name>created_at</name>
+            <type>timestamp</type>
+        </attribute>
+        <attribute>
+            <name>updated_at</name>
+            <type>timestamp</type>
+        </attribute>        
+    </entity>
+                
+    <entity id="signature_sheets_id">
+        <name>signature_sheets</name>
+        <attribute>
+            <name>id</name>
+            <type>bigint unsigned</type>
+        </attribute>
+        <attribute>
+            <name>title</name>
+            <type>varchar(255)</type>
+        </attribute>
+        <attribute>
+            <name>random_identifier</name>
+            <type>varchar(255)</type>
+        </attribute>
+        <attribute>
+            <name>meeting_request_id</name>
+            <type>bigint unsigned</type>
+        </attribute>
+        <attribute>
+            <name>secretary_id</name>
+            <type>bigint unsigned</type>
+        </attribute>
+        <attribute>
+            <name>created_at</name>
+            <type>timestamp</type>
+        </attribute>
+        <attribute>
+            <name>updated_at</name>
+            <type>timestamp</type>
+        </attribute>        
+    </entity>
+                
+    <entity id="subcomittees_id">
+        <name>subcomittees</name>
+        <attribute>
+            <name>id</name>
+            <type>bigint unsigned</type>
+        </attribute>
+        <attribute>
+            <name>comittee_id</name>
+            <type>bigint unsigned</type>
+        </attribute>
+        <attribute>
+            <name>name</name>
+            <type>varchar(255)</type>
+        </attribute>
+        <attribute>
+            <name>icon</name>
+            <type>varchar(255)</type>
+        </attribute>
+        <attribute>
+            <name>created_at</name>
+            <type>timestamp</type>
+        </attribute>
+        <attribute>
+            <name>updated_at</name>
+            <type>timestamp</type>
+        </attribute>        
+    </entity>
+                
+    <entity id="tokens_id">
+        <name>tokens</name>
+        <attribute>
+            <name>id</name>
+            <type>bigint unsigned</type>
+        </attribute>
+        <attribute>
+            <name>token</name>
+            <type>varchar(255)</type>
+        </attribute>
+        <attribute>
+            <name>used</name>
+            <type>tinyint(1)</type>
+        </attribute>
+        <attribute>
+            <name>valid_until_timestamp</name>
+            <type>timestamp</type>
+        </attribute>
+        <attribute>
+            <name>user_id</name>
+            <type>bigint unsigned</type>
+        </attribute>
+        <attribute>
+            <name>created_at</name>
+            <type>timestamp</type>
+        </attribute>
+        <attribute>
+            <name>updated_at</name>
+            <type>timestamp</type>
+        </attribute>        
+    </entity>
+                
+    <entity id="users_id">
+        <name>users</name>
+        <attribute>
+            <name>id</name>
+            <type>bigint unsigned</type>
+        </attribute>
+        <attribute>
+            <name>name</name>
+            <type>varchar(255)</type>
+        </attribute>
+        <attribute>
+            <name>surname</name>
+            <type>varchar(255)</type>
+        </attribute>
+        <attribute>
+            <name>username</name>
+            <type>varchar(255)</type>
+        </attribute>
+        <attribute>
+            <name>email</name>
+            <type>varchar(255)</type>
+        </attribute>
+        <attribute>
+            <name>email_verified_at</name>
+            <type>timestamp</type>
+        </attribute>
+        <attribute>
+            <name>password</name>
+            <type>varchar(255)</type>
+        </attribute>
+        <attribute>
+            <name>biography</name>
+            <type>text</type>
+        </attribute>
+        <attribute>
+            <name>participation</name>
+            <type>ORGANIZATION</type>
+        </attribute>
+        <attribute>
+            <name>block</name>
+            <type>tinyint(1)</type>
+        </attribute>
+        <attribute>
+            <name>clean_name</name>
+            <type>varchar(255)</type>
+        </attribute>
+        <attribute>
+            <name>clean_surname</name>
+            <type>varchar(255)</type>
+        </attribute>
+        <attribute>
+            <name>remember_token</name>
+            <type>varchar(100)</type>
+        </attribute>
+        <attribute>
+            <name>created_at</name>
+            <type>timestamp</type>
+        </attribute>
+        <attribute>
+            <name>updated_at</name>
+            <type>timestamp</type>
+        </attribute>        
+    </entity>
+        
+</sdm>

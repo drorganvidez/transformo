@@ -34,6 +34,69 @@ class MySQLExtractor:
         self.extract_columns()
         self.extract_keys()
 
+    def generate_simple_database_model(self, output = ""):
+
+        filename = None
+        f = None
+
+        if(output == ""):
+            filename = "sdm/proof.txt"
+        else:
+            filename = "sdm/"+output
+
+        try:
+            f = open(filename, "x")
+        except:
+            f = open(filename, "w").close()
+            f = open(filename, "w")
+
+        data_stream = ""
+
+        # start XML
+        data_stream = self.__get_data_stream(stub_name = "core/sdm/stubs/start_xml.stub")
+        self.__write_in_file(data_stream=data_stream, file = f)
+
+        for table in self.tables():
+            # start entity
+            data_stream = self.__get_data_stream(stub_name = "core/sdm/stubs/start_entity.stub")
+            self.__replace(data_stream, "{entity_id}", table.name())
+            self.__replace(data_stream, "{entity_name}", table.name())
+            self.__write_in_file(data_stream=data_stream, file = f)
+
+            for column in table.columns():
+                # start attribute
+                data_stream = self.__get_data_stream(stub_name = "core/sdm/stubs/start_attribute.stub")
+                self.__replace(data_stream, "{attribute_name}", str(column.field()))
+                self.__replace(data_stream, "{attribute_type}", str(column.type()))
+                self.__write_in_file(data_stream=data_stream, file = f)
+                
+                #end attribute
+                data_stream = self.__get_data_stream(stub_name = "core/sdm/stubs/end_attribute.stub")
+                self.__write_in_file(data_stream=data_stream, file = f)
+
+            # end entity
+            data_stream = self.__get_data_stream(stub_name = "core/sdm/stubs/end_entity.stub")
+            self.__write_in_file(data_stream=data_stream, file = f)
+
+        # end XML
+        data_stream = self.__get_data_stream(stub_name = "core/sdm/stubs/end_xml.stub")
+        self.__write_in_file(data_stream=data_stream, file = f)
+        
+    def __replace(self, data_stream, before, after):
+
+        for i in range(len(data_stream)):
+            data_stream[i] = data_stream[i].replace(before, after)
+
+    def __get_data_stream(self, stub_name):
+        data_stream = ""
+        with open (stub_name, "r") as myfile:
+            data_stream = myfile.readlines()
+        return data_stream
+
+    def __write_in_file(self, data_stream, file):
+        for data in data_stream:
+            file.write(data)
+
     def extract_tables_names(self):
 
         mydb = self.connect()

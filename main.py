@@ -2,9 +2,9 @@ from core.sdm.SimpleDatabaseModel import SimpleDatabaseModel
 
 def main():
 
-    sdm1 = SimpleDatabaseModel("sdm/sdm1.xml")
+    evidentia_sdm = SimpleDatabaseModel("sdm/evidentia.xml")
 
-    sdm1.print()
+    evidentia_sdm.print()
 
 
 main()

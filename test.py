@@ -45,11 +45,12 @@ def test_mysql_extractor():
     env = ["host", "database", "user", "password"]
 
     mysql_extractor = MySQLExtractor(env)
-
     mysql_extractor.extract()
+    mysql_extractor.generate_simple_database_model(output = "evidentia.xml")
 
-    for table in mysql_extractor.tables():
-        print(table)
+    sdm = SimpleDatabaseModel('sdm/evidentia.xml')
+
+    sdm.print()
 
 
 #test_recursion()
