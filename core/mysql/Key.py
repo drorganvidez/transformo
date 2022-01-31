@@ -1,6 +1,3 @@
-from pyrsistent import v
-
-
 class Key:
 
     def __init__(self, key_data) -> None:
