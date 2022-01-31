@@ -29,8 +29,10 @@ class MySQLExtractor:
         return mysql.connector.connect(host=self.__host,database=self.__database,user=self.__user,password=self.__password)
 
     def extract(self):
+
         self.extract_tables_names()
         self.extract_columns()
+        self.extract_keys()
 
     def extract_tables_names(self):
 
@@ -61,6 +63,32 @@ class MySQLExtractor:
             table.set_columns(bulk_column_data)
 
         mydb.close()
+
+    def extract_keys(self):
+        mydb = self.connect()
+    
+        cursor = mydb.cursor()
+
+        for table in self.__tables:
+
+            cursor.execute("SHOW KEYS FROM "+ table.name() +"")
+
+            bulk_key_data = cursor.fetchall()
+
+            table.set_keys(bulk_key_data)
+
+        mydb.close()
+
+    def get_table(self, table_name):
+
+        res = None
+
+        for table in self.tables():
+            if(table.name() == table_name):
+                res = table
+                break
+
+        return res
 
     def tables(self):
         return self.__tables
