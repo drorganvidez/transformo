@@ -13,10 +13,11 @@ class Action:
         #self.type = self.__item.getElementsByTagName("type")[0].childNodes[0].data
 
         self.__origin_entity = None
+        self.__dest_entity = None
 
-        self.__find_entities(self.__item)
+        self.__explore()
 
-    def __find_entities(self, entity_item):
+    def __explore(self):
 
         element = None
 
@@ -31,7 +32,14 @@ class Action:
             print(element)
 
             entity = self.__sdm.get_entity_by_id(element)
-            print(entity)
+            self.__origin_entity = entity
+
+        if(len(self.__item.getElementsByTagName("to")) != 0):
+            element = self.__item.getElementsByTagName("to")[0].childNodes[0].data
+            print(element)
+
+            entity = self.__sdm.get_entity_by_id(element)
+            self.__dest_entity = entity
 
 
         '''
