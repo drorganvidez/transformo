@@ -1,10 +1,14 @@
 from core.sdm.SimpleDatabaseModel import SimpleDatabaseModel
+from core.stm.SimpleTransformationModel import SimpleTransformationModel
 
 def main():
 
-    evidentia_sdm = SimpleDatabaseModel("sdm/evidentia.xml")
+    sdm = SimpleDatabaseModel("sdm/sdm1.xml")
+    sdm.print()
 
-    evidentia_sdm.print()
+    stm = SimpleTransformationModel(sdm = sdm, file = "stm/stm.xml")
+    stm.print()
+    
 
-
-main()
+if __name__ == "__main__":
+   main()

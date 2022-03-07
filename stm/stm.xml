@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+
+<stm>
+
+    <transformation type="entity" id="PostMetaToPost">
+        <action type="reduce">
+            <from>post_meta</from>
+            <to>post</to>
+        </action>
+    </transformation>
+
+    <transformation type="attribute" id="AuthorReassign">
+        <action type="reassign">
+            <attribute>Author</attribute>
+            <from>post_meta</from>
+            <to>post</to>
+        </action>
+    </transformation>
+
+    <transformation type="attribute" id="ChangeAuthorType">
+        <action type="retype">
+            <attribute>Author</attribute>
+            <retype>str</retype>
+        </action>
+    </transformation>
+
+</stm>
