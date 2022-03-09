@@ -21,6 +21,9 @@ class Action:
 
         element = None
 
+        if(self.__type == "entity"):
+            print("entititttt")
+
         # if action is type ENTITY TRANSFORMATION
 
         # if action is type ATTRIBUTE TRANSFORMATION
