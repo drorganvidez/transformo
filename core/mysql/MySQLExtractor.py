@@ -12,13 +12,16 @@ class MySQLExtractor:
 
         load_dotenv()
 
-        if(len(env) != 4):
+        print(env)
+
+        if(len(env) != 5):
             raise ValueError("Error, the number of environment variables is not correct")
 
         self.__host = os.getenv(env[0])
         self.__database = os.getenv(env[1])
         self.__user = os.getenv(env[2])
         self.__password = os.getenv(env[3])
+        self.__port = os.getenv(env[4])
 
         self.__tables = []
 
@@ -26,7 +29,12 @@ class MySQLExtractor:
         mydb.close()
 
     def connect(self):
-        return mysql.connector.connect(host=self.__host,database=self.__database,user=self.__user,password=self.__password)
+        return mysql.connector.connect(
+            host=self.__host,
+            database=self.__database,
+            user=self.__user,
+            password=self.__password,
+            port=int(self.__port))
 
     def extract(self):
 
@@ -141,6 +149,8 @@ class MySQLExtractor:
             bulk_key_data = cursor.fetchall()
 
             table.set_keys(bulk_key_data)
+
+            print(bulk_key_data)
 
         mydb.close()
 

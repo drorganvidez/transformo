@@ -42,7 +42,7 @@ def test_properties():
 
 def test_mysql_extractor():
 
-    env = ["host", "database", "user", "password"]
+    env = ["host", "database", "user", "password", "port"]
 
     mysql_extractor = MySQLExtractor(env)
     mysql_extractor.extract()
