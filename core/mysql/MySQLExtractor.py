@@ -78,6 +78,8 @@ class MySQLExtractor:
             data_stream = self.__get_data_stream(stub_name = "core/sdm/stubs/end_entity.stub")
             self.__write_in_file(data_stream=data_stream, file = f)
 
+        # TODO: Extract relationships between entities
+
         # end XML
         data_stream = self.__get_data_stream(stub_name = "core/sdm/stubs/end_xml.stub")
         self.__write_in_file(data_stream=data_stream, file = f)
