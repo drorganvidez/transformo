@@ -8,25 +8,22 @@ from core.mysql.Table import Table
 
 class MySQLExtractor:
 
-    def __init__(self, env) -> None:
+    def __init__(self) -> None:
 
         load_dotenv()
-
-        print(env)
-
-        if(len(env) != 5):
-            raise ValueError("Error, the number of environment variables is not correct")
-
-        self.__host = os.getenv(env[0])
-        self.__database = os.getenv(env[1])
-        self.__user = os.getenv(env[2])
-        self.__password = os.getenv(env[3])
-        self.__port = os.getenv(env[4])
+        
+        self.__host =  os.getenv('DB_HOST')
+        self.__database = os.getenv('DB_DATABASE')
+        self.__user = os.getenv('DB_USER')
+        self.__password = os.getenv('DB_PASSWORD')
+        self.__port = int(os.getenv('DB_PORT'))
 
         self.__tables = []
 
         mydb = self.connect()
         mydb.close()
+
+    
 
     def connect(self):
         return mysql.connector.connect(
@@ -87,6 +84,7 @@ class MySQLExtractor:
             self.__write_in_file(data_stream=data_stream, file = f)
 
         # TODO: Extract relationships between entities
+
 
         # end XML
         data_stream = self.__get_data_stream(stub_name = "core/sdm/stubs/end_xml.stub")

@@ -42,13 +42,11 @@ def test_properties():
 
 def test_mysql_extractor():
 
-    env = ["host", "database", "user", "password", "port"]
-
-    mysql_extractor = MySQLExtractor(env)
+    mysql_extractor = MySQLExtractor()
     mysql_extractor.extract()
-    mysql_extractor.generate_simple_database_model(output = "evidentia.xml")
+    mysql_extractor.generate_simple_database_model(output = "example.xml")
 
-    sdm = SimpleDatabaseModel('sdm/evidentia.xml')
+    sdm = SimpleDatabaseModel('sdm/example.xml')
 
     sdm.print()
 

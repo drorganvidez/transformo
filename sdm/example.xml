@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+
+<sdm>
+        
+    <entity id="post_id">
+        <name>post</name>
+        <attribute>
+            <name>id</name>
+            <type>int</type>
+        </attribute>
+        <attribute>
+            <name>title</name>
+            <type>varchar(20)</type>
+        </attribute>
+        <attribute>
+            <name>body</name>
+            <type>varchar(20)</type>
+        </attribute>        
+    </entity>
+                
+    <entity id="postmeta_id">
+        <name>postmeta</name>
+        <attribute>
+            <name>id</name>
+            <type>int</type>
+        </attribute>
+        <attribute>
+            <name>author</name>
+            <type>varchar(20)</type>
+        </attribute>
+        <attribute>
+            <name>idpostmeta</name>
+            <type>int</type>
+        </attribute>        
+    </entity>
+        
+</sdm>
