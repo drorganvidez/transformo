@@ -148,7 +148,9 @@ class MySQLExtractor:
 
             table.set_keys(bulk_key_data)
 
-            print(bulk_key_data)
+        print("FOREIGN KEYS")
+        cursor.execute("SELECT * FROM information_schema.table_constraints WHERE table_name='postmeta';")
+        print(cursor.fetchall())
 
         mydb.close()
 

@@ -43,7 +43,15 @@ def test_properties():
 def test_mysql_extractor():
 
     mysql_extractor = MySQLExtractor()
+
+    
+
     mysql_extractor.extract()
+
+    for table in mysql_extractor.tables():
+        print("Name: " + table.name())
+        for key in table.keys():
+            print(key)
     mysql_extractor.generate_simple_database_model(output = "example.xml")
 
     sdm = SimpleDatabaseModel('sdm/example.xml')
