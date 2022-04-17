@@ -167,3 +167,4 @@ class MySQLExtractor:
 
     def tables(self):
         return self.__tables
+        
