@@ -15,6 +15,14 @@
         <attribute>
             <name>body</name>
             <type>varchar(20)</type>
+        </attribute>
+        <attribute>
+            <name>author</name>
+            <type>varchar(40)</type>
+        </attribute>
+        <attribute>
+            <name>idpostmeta</name>
+            <type>int</type>
         </attribute>        
     </entity>
                 
