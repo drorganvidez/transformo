@@ -1,3 +1,2 @@
 python-dotenv
-mysql.connector
 mysql-connector-python
