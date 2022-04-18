@@ -1,0 +1,4 @@
+DROP SCHEMA IF EXISTS `base_sql` ;
+
+CREATE SCHEMA IF NOT EXISTS `base_sql` DEFAULT CHARACTER SET utf8 ;
+USE `base_sql` ;

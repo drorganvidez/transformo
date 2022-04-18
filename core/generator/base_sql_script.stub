@@ -1,0 +1,4 @@
+DROP SCHEMA IF EXISTS `{{ database_name }}` ;
+
+CREATE SCHEMA IF NOT EXISTS `{{ database_name }}` DEFAULT CHARACTER SET utf8 ;
+USE `{{ database_name }}` ;

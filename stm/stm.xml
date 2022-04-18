@@ -3,7 +3,7 @@
 <stm>
 
     <transformation type="entity" id="PostMetaToPost">
-        <action type="reduce">
+        <action type="merge">
             <from>post_meta</from>
             <to>post</to>
         </action>
