@@ -1,8 +1,12 @@
+from core.sdm.SimpleDatabaseModel import SimpleDatabaseModel
 from core.stm.SimpleTransformationModel import SimpleTransformationModel
 
 def test():
+
+    sdm = SimpleDatabaseModel('sdm/example.xml')
+    sdm.print()
     
-    stm = SimpleTransformationModel("stm/stm.xml")
+    stm = SimpleTransformationModel(sdm = sdm, file = "stm/stm.xml")
 
     for t in stm.transformations():
         print(t)

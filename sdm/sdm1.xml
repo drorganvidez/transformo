@@ -6,11 +6,11 @@
         <name>Post</name>
         <attribute>
             <name>title</name>
-            <type>String</type>
+            <type>varchar(25)</type>
         </attribute>
         <attribute>
             <name>body</name>
-            <type>String</type>
+            <type>text</type>
         </attribute>
     </entity>
 
@@ -18,7 +18,7 @@
         <name>PostMeta</name>
         <attribute>
             <name>author</name>
-            <type>String</type>
+            <type>varchar(25)</type>
         </attribute>
     </entity>
 
