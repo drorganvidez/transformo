@@ -2,6 +2,7 @@ from typing import List
 from xml.dom import minidom
 
 from core.sdm.Entity import Entity
+from core.sdm.ForeignKey import ForeignKey
 from core.sdm.Relation import Relation
 
 class SimpleDatabaseModel:
@@ -11,13 +12,15 @@ class SimpleDatabaseModel:
         
         doc = minidom.parse(file)
 
-        self.entities_items = []
+        self.entities_items: list[Entity] = list()
         self.relations_items = []
 
         self.__read_entities(doc)
         self.__read_relations(doc)
 
         self.match_relation_and_entities()
+
+        self.detect_foreign_keys()
 
     def __read_entities(self, doc):
         items = doc.getElementsByTagName('entity')
@@ -43,6 +46,19 @@ class SimpleDatabaseModel:
 
         for e in self.entities_items:
             e.set_relations(self.relations_items)
+
+    def detect_foreign_keys(self):
+
+        for e in self.entities_items:
+
+            foreign_keys : list[ForeignKey] = list()
+
+            for r in e.relations():
+                if(r.second_entity().id() == e.id()):
+                    foreign_key = ForeignKey(r.first_entity())
+                    foreign_keys.append(foreign_key)
+
+            e.set_foreign_keys(foreign_keys)
 
     def relations(self):
         return self.relations_items

@@ -11,7 +11,7 @@ class Transformation:
         self.__type = item.getAttribute('type')
         self.__id = item.getAttribute('id')
 
-        self.__actions = []
+        self.__action: list[Action] = list()
 
         self.__read_actions(item.getElementsByTagName("action"))
 

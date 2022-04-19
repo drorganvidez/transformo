@@ -1,4 +1,6 @@
 from core.sdm.Attribute import Attribute
+from core.sdm.ForeignKey import ForeignKey
+from core.sdm.Relation import Relation
 
 
 class Entity:
@@ -10,11 +12,13 @@ class Entity:
 
         self.__id = item.getAttribute('id')
 
-        self.__attributes_items = []
+        self.__attributes_items : list[Attribute] = list()
 
         self.__read_attributes(item.getElementsByTagName("attribute"))
 
-        self.__relations_items = []
+        self.__relations_items : list[Relation] = list()
+
+        self.__foreign_keys : list[ForeignKey] = list()
 
     def __read_attributes(self, attribute_items):
 
@@ -26,6 +30,9 @@ class Entity:
 
     def set_relations(self, relations):
         self.__relations_items = relations
+
+    def set_foreign_keys(self, foreign_keys):
+        self.__foreign_keys = foreign_keys
 
     def name(self):
         return self.__name
@@ -53,6 +60,9 @@ class Entity:
                 related_entities.append(r.second_entity() )
 
         return related_entities
+
+    def foreign_keys(self):
+        return self.__foreign_keys
 
 
     def __str__(self) -> str:

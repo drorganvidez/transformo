@@ -6,6 +6,14 @@ def test():
 
     sdm = SimpleDatabaseModel('sdm/sdm1.xml')
 
+    for e in sdm.entities():
+        print(e)
+
+        print("foreign keys length: " + str(len(e.foreign_keys())))
+        for f in e.foreign_keys():
+            print(f)
+
+    '''
     sdm.print()
     
     stm = SimpleTransformationModel(sdm = sdm, file = "stm/stm.xml")
@@ -22,6 +30,7 @@ def test():
 
     generator = Generator(stm = stm)
     generator.generate()
+    '''
 
 if __name__ == "__main__":
     
