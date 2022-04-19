@@ -8,6 +8,7 @@ class Generator:
         self.__stm = stm
         self.__sdm = self.__stm.sdm()
         self.__filename = "scripts/example.sql"
+        self.__database_name = "example"
         templateLoader = jinja2.FileSystemLoader(searchpath = "./core/generator")
         self.__template_env = jinja2.Environment(loader = templateLoader)
 
@@ -22,6 +23,10 @@ class Generator:
         # generate tables
         for e in self.__sdm.entities():
             self.generate_entity(e)
+
+        # generate transformations
+        for t in self.__stm.transformations():
+            self.generate_transformation(t)
 
 
     def clear(self):
@@ -43,7 +48,7 @@ class Generator:
         today = datetime.today().strftime('%A, %B %d, %Y %H:%M:%S')
 
         output_from_parsed_template = template.render(
-            database_name = "example", 
+            database_name = self.__database_name, 
             today = today)
 
         self.write(output_from_parsed_template)
@@ -54,8 +59,30 @@ class Generator:
         template = self.__template_env.get_template("entity.stub")
 
         output_from_parsed_template = template.render(
-            database_name = "example", 
+            database_name = self.__database_name, 
             entity = entity)
 
         self.write(output_from_parsed_template)
         self.write_empty_line()
+
+    def generate_transformation(self, transformation):
+
+        if transformation.type() == "attribute":
+
+            for a in transformation.actions():
+
+                if a.type() == "retype":
+
+                    self.write_transformation(
+                        transformation = transformation,
+                        action = a,
+                        template_file="retype_attribute_action.stub")
+
+    def write_transformation(self, transformation, action, template_file):
+        template = self.__template_env.get_template(template_file)
+        render = template.render(
+            transformation_name = transformation.id(), 
+            database_name = self.__database_name, 
+            action = action.apply())
+        self.write(render)
+

@@ -63,7 +63,7 @@ class SimpleDatabaseModel:
     def relations(self):
         return self.relations_items
 
-    def get_entity_by_id(self, id):
+    def get_entity_by_id(self, id) -> Entity:
         res = None
 
         for e in self.entities():

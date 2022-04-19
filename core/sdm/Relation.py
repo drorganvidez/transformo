@@ -36,7 +36,7 @@ class Relation:
             counter = counter + 1
 
         if (self.many_2 != None):
-            counter = counter + 1
+            counter += 1
 
         return counter == 2
 

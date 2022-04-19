@@ -19,9 +19,15 @@ class Transformation:
         
         for a in actions:
 
-            action = Action(sdm = self.__sdm, item = a)
+            action = Action(sdm = self.__sdm, item = a, transformation_action = self.__type)
 
             self.__actions.append(action)
+
+    def type(self):
+        return self.__type
+
+    def id(self):
+        return self.__id
 
     def actions(self):
 

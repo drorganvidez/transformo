@@ -2,6 +2,7 @@
 
 <stm>
 
+    <!-- 
     <transformation type="entity" id="PostMetaToPost">
         <action type="merge">
             <from>post_meta</from>
@@ -16,11 +17,13 @@
             <to>post</to>
         </action>
     </transformation>
+    -->
 
     <transformation type="attribute" id="ChangeAuthorType">
         <action type="retype">
-            <attribute>Author</attribute>
-            <retype>str</retype>
+            <entity>post_meta</entity>
+            <attribute>author</attribute>
+            <retype>VARCHAR(100)</retype>
         </action>
     </transformation>
 
