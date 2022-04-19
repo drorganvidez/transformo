@@ -1,13 +1,24 @@
 -- -----------------------------------------------------
--- Table  `{{ database_name }}`.`{{ entity_id }}`
+-- Table  `{{ database_name }}`.`{{ entity.id() }}`
 -- -----------------------------------------------------
 
-DROP TABLE IF EXISTS `{{ database_name }}`.`{{ entity_id }}` ;
-CREATE TABLE IF NOT EXISTS `{{ database_name }}`.`{{ entity_id }}` (
+DROP TABLE IF EXISTS `{{ database_name }}`.`{{ entity.id() }}` ;
+CREATE TABLE IF NOT EXISTS `{{ database_name }}`.`{{ entity.id() }}` (
   `id` INT NOT NULL AUTO_INCREMENT,
-{%- for attribute in attributes  %}
+{%- for attribute in entity.attributes()  %}
   `{{attribute.name()}}` {{attribute.type().upper()}}  NOT NULL,
 {%- endfor %}
-  PRIMARY KEY (id))
+{%- for foreign_key in entity.foreign_keys()  %}
+  id_{{entity.id()}} INT NOT NULL,
+{%- endfor %}
+  PRIMARY KEY (id)
+
+  {%- if entity.foreign_keys() -%}
+    ,
+  {%- endif -%}
+
+  {% for foreign_key in entity.foreign_keys()  %}
+  CONSTRAINT FOREIGN KEY (id_{{entity.id()}}) REFERENCES {{foreign_key.references_entity().id()}} (id)
+  {%- endfor %})
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;

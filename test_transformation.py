@@ -13,7 +13,7 @@ def test():
         for f in e.foreign_keys():
             print(f)
 
-    '''
+    
     sdm.print()
     
     stm = SimpleTransformationModel(sdm = sdm, file = "stm/stm.xml")
@@ -30,7 +30,7 @@ def test():
 
     generator = Generator(stm = stm)
     generator.generate()
-    '''
+    
 
 if __name__ == "__main__":
     

@@ -55,8 +55,7 @@ class Generator:
 
         output_from_parsed_template = template.render(
             database_name = "example", 
-            entity_id = entity.id(),
-            attributes = entity.attributes())
+            entity = entity)
 
         self.write(output_from_parsed_template)
         self.write_empty_line()
