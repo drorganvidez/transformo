@@ -12,7 +12,6 @@ USE `base1` ;
 -- TABLES
 
 DROP TABLE IF EXISTS `post` ;
-
 CREATE TABLE IF NOT EXISTS post (
   id int(4) NOT NULL AUTO_INCREMENT,
   title varchar(20) NOT NULL,

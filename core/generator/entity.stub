@@ -1,0 +1,13 @@
+-- -----------------------------------------------------
+-- Table  `{{ database_name }}`.`{{ entity_id }}`
+-- -----------------------------------------------------
+
+DROP TABLE IF EXISTS `{{ database_name }}`.`{{ entity_id }}` ;
+CREATE TABLE IF NOT EXISTS `{{ database_name }}`.`{{ entity_id }}` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+{%- for attribute in attributes  %}
+  `{{attribute.name()}}` {{attribute.type().upper()}}  NOT NULL,
+{%- endfor %}
+  PRIMARY KEY (id))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
