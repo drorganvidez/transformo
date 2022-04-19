@@ -19,6 +19,7 @@
     </transformation>
     -->
 
+    
     <transformation type="attribute" id="ChangeAuthorType">
         <action type="retype">
             <entity>post_meta</entity>
@@ -26,5 +27,21 @@
             <retype>VARCHAR(100)</retype>
         </action>
     </transformation>
+
+    <transformation type="attribute" id="ChangeAuthorName">
+        <action type="rename">
+            <entity>post_meta</entity>
+            <attribute>author</attribute>
+            <rename>owner</rename>
+        </action>
+    </transformation>
+
+    <transformation type="attribute" id="DeleteAuthor">
+        <action type="delete">
+            <entity>post_meta</entity>
+            <attribute>owner</attribute>
+        </action>
+    </transformation>
+    
 
 </stm>

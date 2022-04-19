@@ -67,6 +67,10 @@ class Generator:
 
     def generate_transformation(self, transformation):
 
+        if transformation.type() == "entity":
+            #TODO
+            pass
+
         if transformation.type() == "attribute":
 
             for a in transformation.actions():
@@ -78,6 +82,24 @@ class Generator:
                         action = a,
                         template_file="retype_attribute_action.stub")
 
+                if a.type() == "rename":
+
+                    self.write_transformation(
+                        transformation = transformation,
+                        action = a,
+                        template_file="rename_attribute_action.stub")
+
+                if a.type() == "delete":
+
+                    self.write_transformation(
+                        transformation = transformation,
+                        action = a,
+                        template_file="delete_attribute_action.stub")
+
+        if transformation.type() == "relation":
+            #TODO
+            pass
+
     def write_transformation(self, transformation, action, template_file):
         template = self.__template_env.get_template(template_file)
         render = template.render(
@@ -85,4 +107,5 @@ class Generator:
             database_name = self.__database_name, 
             action = action.apply())
         self.write(render)
+        self.write_empty_line()
 
