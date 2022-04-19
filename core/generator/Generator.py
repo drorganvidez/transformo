@@ -3,8 +3,10 @@ from datetime import datetime
 
 class Generator:
 
-    def __init__(self, sdm_base) -> None:
-        self.__sdm_base = sdm_base
+    def __init__(self, stm) -> None:
+        
+        self.__stm = stm
+        self.__sdm = self.__stm.sdm()
         self.__filename = "scripts/example.sql"
         templateLoader = jinja2.FileSystemLoader(searchpath = "./core/generator")
         self.__template_env = jinja2.Environment(loader = templateLoader)
@@ -13,16 +15,13 @@ class Generator:
 
         # clear file
         self.clear()
-        
 
         # generate base sql
         self.generate_base()
         
-
         # generate tables
-        for e in self.__sdm_base.entities():
+        for e in self.__sdm.entities():
             self.generate_entity(e)
-            print(e)
 
 
     def clear(self):

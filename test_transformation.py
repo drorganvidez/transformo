@@ -20,7 +20,7 @@ def test():
         print("\n")
 
 
-    generator = Generator(sdm_base = sdm)
+    generator = Generator(stm = stm)
     generator.generate()
 
 if __name__ == "__main__":

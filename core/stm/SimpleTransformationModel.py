@@ -25,6 +25,9 @@ class SimpleTransformationModel:
     def transformations(self):
         return self.__transformations
 
+    def sdm(self):
+        return self.__sdm
+
     def print(self):
         for t in self.__transformations:
             print("\n" + str(t))
