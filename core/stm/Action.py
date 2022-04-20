@@ -1,6 +1,7 @@
 
 
 from typing import Any
+from core.stm.actions.CreateAttributeAction import CreateAttributeAction
 from core.stm.actions.DeleteAttributeAction import DeleteAttributeAction
 from core.stm.actions.RenameAttributeAction import RenameAttributeAction
 from core.stm.actions.RetypeAttributeAction import RetypeAttributeAction
@@ -24,6 +25,18 @@ class Action:
             pass
 
         if self.__transformation_action == "attribute":
+
+            if self.__type == "create":
+
+                # basic data
+                element = self.__item.getElementsByTagName("entity")[0].childNodes[0].data
+                entity = self.__sdm.get_entity_by_id(element)
+                attribute = self.__item.getElementsByTagName("attribute")[0].childNodes[0].data
+                type = self.__item.getElementsByTagName("type")[0].childNodes[0].data
+
+                # create action
+                self.__apply = CreateAttributeAction(entity = entity, attribute = attribute, type = type)
+
 
             if self.__type == "retype":
 

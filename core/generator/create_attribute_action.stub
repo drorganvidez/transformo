@@ -3,4 +3,4 @@
 -- -----------------------------------------------------
 
 ALTER TABLE `{{ database_name_to }}`.`{{ action.entity().id() }}`
-MODIFY COLUMN `{{ action.attribute() }}` {{ action.retype() }};
+ADD COLUMN `{{ action.attribute() }}` {{ action.type().upper() }};

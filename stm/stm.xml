@@ -28,7 +28,7 @@
         </action>
     </transformation>
 
-    <transformation type="attribute" id="ChangeAuthorName">
+    <transformation type="attribute" id="RenameAuthorName">
         <action type="rename">
             <entity>post_meta</entity>
             <attribute>author</attribute>
@@ -40,6 +40,14 @@
         <action type="delete">
             <entity>post_meta</entity>
             <attribute>owner</attribute>
+        </action>
+    </transformation>
+
+    <transformation type="attribute" id="CreateSummary">
+        <action type="create">
+            <entity>post_meta</entity>
+            <attribute>summary</attribute>
+            <type>text</type>
         </action>
     </transformation>
     

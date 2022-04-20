@@ -14,9 +14,10 @@ SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
 -- -----------------------------------------------------
--- Schema {{ database_name }}
+-- Schema {{ database_name_to }}
 -- -----------------------------------------------------
-DROP SCHEMA IF EXISTS `{{ database_name }}` ;
-CREATE SCHEMA IF NOT EXISTS `{{ database_name }}` DEFAULT CHARACTER SET utf8 ;
-USE `{{ database_name }}` ;
+
+DROP SCHEMA IF EXISTS `{{ database_name_to }}` ;
+CREATE SCHEMA IF NOT EXISTS `{{ database_name_to }}` DEFAULT CHARACTER SET utf8 ;
+USE `{{ database_name_to }}` ;
 

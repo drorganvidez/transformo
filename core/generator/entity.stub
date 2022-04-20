@@ -1,9 +1,9 @@
 -- -----------------------------------------------------
--- Table  `{{ database_name }}`.`{{ entity.id() }}`
+-- Table  `{{ database_name_to }}`.`{{ entity.id() }}`
 -- -----------------------------------------------------
 
-DROP TABLE IF EXISTS `{{ database_name }}`.`{{ entity.id() }}` ;
-CREATE TABLE IF NOT EXISTS `{{ database_name }}`.`{{ entity.id() }}` (
+DROP TABLE IF EXISTS `{{ database_name_to }}`.`{{ entity.id() }}` ;
+CREATE TABLE IF NOT EXISTS `{{ database_name_to }}`.`{{ entity.id() }}` (
   `id` INT NOT NULL AUTO_INCREMENT,
 {%- for attribute in entity.attributes()  %}
   `{{attribute.name()}}` {{attribute.type().upper()}}  NOT NULL,
@@ -22,3 +22,5 @@ CREATE TABLE IF NOT EXISTS `{{ database_name }}`.`{{ entity.id() }}` (
   {%- endfor %})
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
+
+INSERT INTO `{{ database_name_to }}`.`{{ entity.id() }}`  SELECT * FROM `{{ database_name_from }}`.`{{ entity.id() }}` ;

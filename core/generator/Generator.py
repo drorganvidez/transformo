@@ -8,7 +8,8 @@ class Generator:
         self.__stm = stm
         self.__sdm = self.__stm.sdm()
         self.__filename = "scripts/example.sql"
-        self.__database_name = "example"
+        self.__database_name_to = "example"
+        self.__database_name_from = "base1"
         templateLoader = jinja2.FileSystemLoader(searchpath = "./core/generator")
         self.__template_env = jinja2.Environment(loader = templateLoader)
 
@@ -48,7 +49,7 @@ class Generator:
         today = datetime.today().strftime('%A, %B %d, %Y %H:%M:%S')
 
         output_from_parsed_template = template.render(
-            database_name = self.__database_name, 
+            database_name_to = self.__database_name_to, 
             today = today)
 
         self.write(output_from_parsed_template)
@@ -59,7 +60,8 @@ class Generator:
         template = self.__template_env.get_template("entity.stub")
 
         output_from_parsed_template = template.render(
-            database_name = self.__database_name, 
+            database_name_to = self.__database_name_to, 
+            database_name_from = self.__database_name_from, 
             entity = entity)
 
         self.write(output_from_parsed_template)
@@ -74,6 +76,13 @@ class Generator:
         if transformation.type() == "attribute":
 
             for a in transformation.actions():
+
+                if a.type() == "create":
+
+                    self.write_transformation(
+                        transformation = transformation,
+                        action = a,
+                        template_file="create_attribute_action.stub")
 
                 if a.type() == "retype":
 
@@ -104,7 +113,7 @@ class Generator:
         template = self.__template_env.get_template(template_file)
         render = template.render(
             transformation_name = transformation.id(), 
-            database_name = self.__database_name, 
+            database_name_to = self.__database_name_to, 
             action = action.apply())
         self.write(render)
         self.write_empty_line()
