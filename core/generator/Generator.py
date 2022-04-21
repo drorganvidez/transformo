@@ -70,8 +70,15 @@ class Generator:
     def generate_transformation(self, transformation):
 
         if transformation.type() == "entity":
-            #TODO
-            pass
+
+            for a in transformation.actions():
+
+                if a.type() == "create":
+
+                    self.write_transformation(
+                        transformation = transformation,
+                        action = a,
+                        template_file = "create_entity_action.stub")
 
         if transformation.type() == "attribute":
 

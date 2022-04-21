@@ -1,5 +1,6 @@
 from typing import List
 from xml.dom import minidom
+from core.sdm.Attribute import Attribute
 
 from core.sdm.Entity import Entity
 from core.sdm.ForeignKey import ForeignKey
@@ -72,6 +73,30 @@ class SimpleDatabaseModel:
                 break
 
         return res
+
+    def add_entity(self, entity_name):
+
+        entity = Entity(static = True, id = entity_name)
+        self.entities_items.append(entity)
+
+    def add_attribute(self, entity, attribute_name, attribute_type):
+
+        attribute = Attribute(static = True, attribute_name = attribute_name, attribute_type = attribute_type)
+
+        entity.add_attribute(attribute = attribute)
+
+    def edit_attribute_type(self, entity, attribute_name, retype):
+
+        entity.edit_attribute_type(attribute_name = attribute_name, retype = retype)
+
+    def edit_attribute_name(self, entity, attribute_name, rename):
+
+        entity.edit_attribute_name(attribute_name = attribute_name, rename = rename)
+
+    def delete_attribute(self, entity, attribute_name):
+
+        entity.delete_attribute_name(attribute_name = attribute_name)
+
 
     def print(self) -> str:
 

@@ -20,6 +20,8 @@ def test():
 
     generator = Generator(stm = stm)
     generator.generate()
+
+    sdm.print()
     
 
 if __name__ == "__main__":

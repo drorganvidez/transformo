@@ -59,6 +59,20 @@
             <type>text</type>
         </action>
     </transformation>
+
+    <transformation type="entity" id="CreateComments">
+        <action type="create">
+            <entity>comment</entity>
+        </action>
+    </transformation>
+
+    <transformation type="attribute" id="CreateTextInComment">
+        <action type="create">
+            <entity>comment</entity>
+            <attribute>title</attribute>
+            <type>varchar(100)</type>
+        </action>
+    </transformation>
     
 
 </stm>

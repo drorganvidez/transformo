@@ -1,0 +1,9 @@
+-- -----------------------------------------------------
+-- Transformation  {{ transformation_name }}
+-- -----------------------------------------------------
+
+CREATE TABLE IF NOT EXISTS `{{ database_name_to }}`.`{{ action.entity().id() }}` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (id)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
