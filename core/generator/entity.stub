@@ -9,7 +9,7 @@ CREATE TABLE IF NOT EXISTS `{{ database_name_to }}`.`{{ entity.id() }}` (
   `{{attribute.name()}}` {{attribute.type().upper()}}  NOT NULL,
 {%- endfor %}
 {%- for foreign_key in entity.foreign_keys()  %}
-  id_{{entity.id()}} INT NOT NULL,
+  id_{{entity.id()}} INT,
 {%- endfor %}
   PRIMARY KEY (id)
 
@@ -23,4 +23,4 @@ CREATE TABLE IF NOT EXISTS `{{ database_name_to }}`.`{{ entity.id() }}` (
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
-INSERT INTO `{{ database_name_to }}`.`{{ entity.id() }}`  SELECT * FROM `{{ database_name_from }}`.`{{ entity.id() }}` ;
+INSERT INTO `{{ database_name_to }}`.`{{ entity.id() }}` SELECT * FROM `{{ database_name_from }}`.`{{ entity.id() }}` ;

@@ -50,6 +50,15 @@
             <type>text</type>
         </action>
     </transformation>
+
+    <transformation type="attribute" id="MoveBody">
+        <action type="move">
+            <from>post</from>
+            <to>post_meta</to>
+            <attribute>body</attribute>
+            <type>text</type>
+        </action>
+    </transformation>
     
 
 </stm>

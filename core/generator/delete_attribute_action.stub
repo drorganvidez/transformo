@@ -3,4 +3,4 @@
 -- -----------------------------------------------------
 
 ALTER TABLE `{{ database_name_to }}`.`{{ action.entity().id() }}`
-DROP COLUMN `{{ action.attribute() }}`;
+  DROP COLUMN `{{ action.attribute() }}`;

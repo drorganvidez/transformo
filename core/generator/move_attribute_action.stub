@@ -1,0 +1,12 @@
+-- -----------------------------------------------------
+-- Transformation  {{ transformation_name }}
+-- -----------------------------------------------------
+
+ALTER TABLE `{{ database_name_to }}`.`{{ action.entity_to().id() }}`
+  ADD COLUMN `{{ action.attribute() }}` {{ action.type().upper() }};
+
+INSERT INTO `{{ database_name_to }}`.`{{ action.entity_to().id() }}` (`{{ action.attribute() }}`) 
+  SELECT `{{ action.attribute() }}` FROM `{{ database_name_from }}`.`{{ action.entity_from().id() }}`;
+
+ALTER TABLE `{{ database_name_to}}`.`{{ action.entity_from().id() }}`
+  DROP COLUMN `{{ action.attribute() }}`;

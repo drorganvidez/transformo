@@ -3,6 +3,7 @@
 from typing import Any
 from core.stm.actions.CreateAttributeAction import CreateAttributeAction
 from core.stm.actions.DeleteAttributeAction import DeleteAttributeAction
+from core.stm.actions.MoveAttributeAction import MoveAttributeAction
 from core.stm.actions.RenameAttributeAction import RenameAttributeAction
 from core.stm.actions.RetypeAttributeAction import RetypeAttributeAction
 
@@ -48,6 +49,20 @@ class Action:
 
                 # create action
                 self.__apply = RetypeAttributeAction(entity = entity, attribute = attribute, retype = retype)
+
+            if self.__type == "move":
+
+                # basic data
+                element_from = self.__item.getElementsByTagName("from")[0].childNodes[0].data
+                element_to = self.__item.getElementsByTagName("to")[0].childNodes[0].data
+                entity_from = self.__sdm.get_entity_by_id(element_from)
+                entity_to = self.__sdm.get_entity_by_id(element_to)
+                attribute = self.__item.getElementsByTagName("attribute")[0].childNodes[0].data
+                type = self.__item.getElementsByTagName("type")[0].childNodes[0].data
+
+                # create action
+                self.__apply = MoveAttributeAction(entity_from = entity_from, entity_to = entity_to, attribute = attribute, type = type)
+
 
             if self.__type == "rename":
 

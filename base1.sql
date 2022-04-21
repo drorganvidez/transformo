@@ -19,8 +19,8 @@ CREATE TABLE IF NOT EXISTS post (
   PRIMARY KEY (id)
 ) ENGINE=InnoDB AUTO_INCREMENT=1;
 
-DROP TABLE IF EXISTS `postmeta` ;
-CREATE TABLE IF NOT EXISTS postmeta (
+DROP TABLE IF EXISTS `post_meta` ;
+CREATE TABLE IF NOT EXISTS post_meta (
   id int(4) NOT NULL AUTO_INCREMENT,
   author varchar(20) NOT NULL,
   idpostmeta int(4) NOT NULL,

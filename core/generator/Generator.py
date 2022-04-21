@@ -82,28 +82,35 @@ class Generator:
                     self.write_transformation(
                         transformation = transformation,
                         action = a,
-                        template_file="create_attribute_action.stub")
+                        template_file = "create_attribute_action.stub")
 
                 if a.type() == "retype":
 
                     self.write_transformation(
                         transformation = transformation,
                         action = a,
-                        template_file="retype_attribute_action.stub")
+                        template_file = "retype_attribute_action.stub")
+
+                if a.type() == "move":
+
+                    self.write_transformation(
+                        transformation = transformation,
+                        action = a,
+                        template_file = "move_attribute_action.stub")
 
                 if a.type() == "rename":
 
                     self.write_transformation(
                         transformation = transformation,
                         action = a,
-                        template_file="rename_attribute_action.stub")
+                        template_file = "rename_attribute_action.stub")
 
                 if a.type() == "delete":
 
                     self.write_transformation(
                         transformation = transformation,
                         action = a,
-                        template_file="delete_attribute_action.stub")
+                        template_file = "delete_attribute_action.stub")
 
         if transformation.type() == "relation":
             #TODO
@@ -113,7 +120,8 @@ class Generator:
         template = self.__template_env.get_template(template_file)
         render = template.render(
             transformation_name = transformation.id(), 
-            database_name_to = self.__database_name_to, 
+            database_name_from = self.__database_name_from,
+            database_name_to = self.__database_name_to,
             action = action.apply())
         self.write(render)
         self.write_empty_line()

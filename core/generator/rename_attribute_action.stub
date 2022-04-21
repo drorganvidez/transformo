@@ -3,4 +3,4 @@
 -- -----------------------------------------------------
 
 ALTER TABLE `{{ database_name_to }}`.`{{ action.entity().id() }}`
-RENAME COLUMN `{{ action.attribute() }}` TO `{{ action.rename() }}`;
+  RENAME COLUMN `{{ action.attribute() }}` TO `{{ action.rename() }}`;
