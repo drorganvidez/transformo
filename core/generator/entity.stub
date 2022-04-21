@@ -21,6 +21,7 @@ CREATE TABLE IF NOT EXISTS `{{ database_name_to }}`.`{{ entity.id() }}` (
   CONSTRAINT FOREIGN KEY (id_{{entity.id()}}) REFERENCES {{foreign_key.references_entity().id()}} (id)
   {%- endfor %})
 ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
+DEFAULT CHARACTER SET = UTF8MB4;
 
-INSERT INTO `{{ database_name_to }}`.`{{ entity.id() }}` SELECT * FROM `{{ database_name_from }}`.`{{ entity.id() }}` ;
+INSERT INTO `{{ database_name_to }}`.`{{ entity.id() }}` 
+  SELECT * FROM `{{ database_name_from }}`.`{{ entity.id() }}` ;

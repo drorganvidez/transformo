@@ -1,12 +1,14 @@
+from core.sdm.SimpleDatabaseModel import SimpleDatabaseModel
 import jinja2
 from datetime import datetime
+from copy import copy
 
 class Generator:
 
     def __init__(self, stm) -> None:
         
         self.__stm = stm
-        self.__sdm = self.__stm.sdm()
+        self.__sdm = SimpleDatabaseModel(self.__stm.sdm().file())
         self.__filename = "scripts/example.sql"
         self.__database_name_to = "example"
         self.__database_name_from = "base1"

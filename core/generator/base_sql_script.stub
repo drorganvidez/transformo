@@ -18,6 +18,6 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- -----------------------------------------------------
 
 DROP SCHEMA IF EXISTS `{{ database_name_to }}` ;
-CREATE SCHEMA IF NOT EXISTS `{{ database_name_to }}` DEFAULT CHARACTER SET utf8 ;
+CREATE SCHEMA IF NOT EXISTS `{{ database_name_to }}` DEFAULT CHARACTER SET UTF8MB4 ;
 USE `{{ database_name_to }}` ;
 

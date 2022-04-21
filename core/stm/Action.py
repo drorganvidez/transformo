@@ -31,6 +31,7 @@ class Action:
                 # update entity
                 self.__sdm.add_entity(element)
 
+                # get entity from SDM
                 entity = self.__sdm.get_entity_by_id(element)
 
                 # create action

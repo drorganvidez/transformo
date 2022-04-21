@@ -2,24 +2,6 @@
 
 <stm>
 
-    <!-- 
-    <transformation type="entity" id="PostMetaToPost">
-        <action type="merge">
-            <from>post_meta</from>
-            <to>post</to>
-        </action>
-    </transformation>
-
-    <transformation type="attribute" id="AuthorReassign">
-        <action type="reassign">
-            <attribute>Author</attribute>
-            <from>post_meta</from>
-            <to>post</to>
-        </action>
-    </transformation>
-    -->
-
-    
     <transformation type="attribute" id="ChangeAuthorType">
         <action type="retype">
             <entity>post_meta</entity>

@@ -4,6 +4,6 @@
 
 CREATE TABLE IF NOT EXISTS `{{ database_name_to }}`.`{{ action.entity().id() }}` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY (id)
+  PRIMARY KEY (id))
 ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
+DEFAULT CHARACTER SET = UTF8MB4;

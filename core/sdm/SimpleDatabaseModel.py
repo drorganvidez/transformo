@@ -9,9 +9,9 @@ from core.sdm.Relation import Relation
 class SimpleDatabaseModel:
 
     def __init__(self, file):
-        self.file = file
+        self.__file = file
         
-        doc = minidom.parse(file)
+        doc = minidom.parse(self.__file)
 
         self.entities_items: list[Entity] = list()
         self.relations_items = []
@@ -97,12 +97,15 @@ class SimpleDatabaseModel:
 
         entity.delete_attribute_name(attribute_name = attribute_name)
 
+    def file(self) -> str:
+        return self.__file
+
 
     def print(self) -> str:
 
         print()
 
-        print(self.file)
+        print(self.__file)
         
         for e in self.entities():
 
