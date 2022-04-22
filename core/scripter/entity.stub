@@ -9,7 +9,7 @@ CREATE TABLE IF NOT EXISTS `{{ database_name_to }}`.`{{ entity.id() }}` (
   `{{attribute.name()}}` {{attribute.type().upper()}}  NOT NULL,
 {%- endfor %}
 {%- for foreign_key in entity.foreign_keys()  %}
-  id_{{entity.id()}} INT,
+  {{foreign_key.references_entity().id()}}_id INT,
 {%- endfor %}
   PRIMARY KEY (id)
 
@@ -18,7 +18,7 @@ CREATE TABLE IF NOT EXISTS `{{ database_name_to }}`.`{{ entity.id() }}` (
   {%- endif -%}
 
   {% for foreign_key in entity.foreign_keys()  %}
-  CONSTRAINT FOREIGN KEY (id_{{entity.id()}}) REFERENCES {{foreign_key.references_entity().id()}} (id)
+  CONSTRAINT FOREIGN KEY ({{foreign_key.references_entity().id()}}_id) REFERENCES {{foreign_key.references_entity().id()}} (id)
   {%- endfor %})
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = UTF8MB4;

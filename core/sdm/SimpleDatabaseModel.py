@@ -88,7 +88,7 @@ class SimpleDatabaseModel:
         entity = Entity(static = True, id = entity_name)
         self.entities_items.append(entity)
 
-    def add_relation(self, relations):
+    def add_relation(self, relations) -> Relation:
 
         first_entity = self.get_entity_by_id(relations[0].getElementsByTagName("entity")[0].childNodes[0].data)
         second_entity = self.get_entity_by_id(relations[1].getElementsByTagName("entity")[0].childNodes[0].data)
@@ -108,6 +108,8 @@ class SimpleDatabaseModel:
 
         # matching between entities
         self.match_entities()
+
+        return relation
 
     def add_attribute(self, entity, attribute_name, attribute_type):
 

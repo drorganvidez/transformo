@@ -1,4 +1,4 @@
-from core.generator.Generator import Generator
+from core.scripter.Scripter import Scripter
 from core.sdm.SimpleDatabaseModel import SimpleDatabaseModel
 from core.stm.SimpleTransformationModel import SimpleTransformationModel
 
@@ -8,20 +8,8 @@ def test():
     
     stm = SimpleTransformationModel(sdm = sdm, file = "stm/stm.xml")
 
-    '''
-    for t in stm.transformations():
-        print(t)
-
-        print("\tactions")
-        for a in t.actions():
-            print("\t"+str(a))
-
-        print("\n")
-    '''
-
-
-    generator = Generator(stm = stm)
-    generator.generate()
+    scripter = Scripter(stm = stm)
+    scripter.generate()
 
     sdm.print()
     

@@ -23,9 +23,9 @@ DROP TABLE IF EXISTS `post_meta` ;
 CREATE TABLE IF NOT EXISTS post_meta (
   id int(4) NOT NULL AUTO_INCREMENT,
   author varchar(20) NOT NULL,
-  idpostmeta int(4) NOT NULL,
+  post_id int(4) NOT NULL,
   PRIMARY KEY (id),
-  CONSTRAINT FOREIGN KEY (idpostmeta) REFERENCES post (id)
+  CONSTRAINT FOREIGN KEY (post_id) REFERENCES post (id)
 ) ENGINE=InnoDB AUTO_INCREMENT=1;
 
 

@@ -2,6 +2,7 @@ from typing import Any
 from core.sdm.Relation import Relation
 from core.stm.actions.CreateAttributeAction import CreateAttributeAction
 from core.stm.actions.CreateEntityAction import CreateEntityAction
+from core.stm.actions.CreateRelationAction import CreateRelationAction
 from core.stm.actions.DeleteAttributeAction import DeleteAttributeAction
 from core.stm.actions.MoveAttributeAction import MoveAttributeAction
 from core.stm.actions.RenameAttributeAction import RenameAttributeAction
@@ -123,9 +124,10 @@ class Action:
                 relations = self.__item.getElementsByTagName("relation")
 
                 # update relation
-                self.__sdm.add_relation(relations)
+                relation = self.__sdm.add_relation(relations)
 
-                
+                # create action
+                self.__apply = CreateRelationAction(first_entity = relation.first_entity(), second_entity = relation.second_entity())
 
                 '''
                 # basic data

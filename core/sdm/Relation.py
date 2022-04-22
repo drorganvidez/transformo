@@ -33,10 +33,7 @@ class Relation:
             self.__first_entity_cardinality = first_entity_cardinality
             self.__second_entity_cardinality = second_entity_cardinality
 
-            # TODO: asociar los one_1... one_2...
             self.__get_value_static()
-
-
 
     def __check_max_counter(self):
         counter = 0
@@ -100,9 +97,6 @@ class Relation:
         if self.__second_entity_cardinality == "many" :
 
             self.many_2 = self.second_entity().id()
-
-
-
 
 
     def set_entities(self, entities):

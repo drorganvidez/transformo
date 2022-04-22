@@ -58,8 +58,6 @@
         </action>
     </transformation>
 
-    
-
     <transformation type="relation" id="CreateRelationBetweenCommentAndPost">
         <action type="create">
             <relation>

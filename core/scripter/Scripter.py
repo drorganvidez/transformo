@@ -3,7 +3,7 @@ import jinja2
 from datetime import datetime
 from copy import copy
 
-class Generator:
+class Scripter:
 
     def __init__(self, stm) -> None:
         
@@ -12,7 +12,7 @@ class Generator:
         self.__filename = "scripts/example.sql"
         self.__database_name_to = "example"
         self.__database_name_from = "base1"
-        templateLoader = jinja2.FileSystemLoader(searchpath = "./core/generator")
+        templateLoader = jinja2.FileSystemLoader(searchpath = "./core/scripter")
         self.__template_env = jinja2.Environment(loader = templateLoader)
 
     def generate(self):

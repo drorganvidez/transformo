@@ -1,0 +1,11 @@
+-- -----------------------------------------------------
+-- Transformation  {{ transformation_name }}
+-- -----------------------------------------------------
+
+ALTER TABLE `{{ database_name_to }}`.`{{ action.second_entity().id() }}`
+  ADD COLUMN `{{ action.first_entity().id() }}_id` INT NOT NULL;
+
+ALTER TABLE `{{ database_name_to }}`.`{{ action.second_entity().id() }}`
+    ADD CONSTRAINT `fk_{{ action.first_entity().id() }}_id` 
+    FOREIGN KEY (`{{ action.first_entity().id() }}_id`) 
+    REFERENCES `{{ action.first_entity().id() }}` (`id`);
