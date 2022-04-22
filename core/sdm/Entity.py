@@ -46,7 +46,23 @@ class Entity:
             self.__attributes_items.append(attribute)
 
     def set_relations(self, relations):
-        self.__relations_items = relations
+
+        for r in relations:
+
+            if not r in self.relations():
+
+                if (r.first_entity().id() == self.id()) :
+                    self.add_relation(r)
+
+                if (r.second_entity().id() == self.id()) :
+                    self.add_relation(r)
+
+
+    def clear_relations(self):
+        self.__relations_items = list()
+
+    def add_relation(self, relation):
+        self.__relations_items.append(relation)
 
     def set_foreign_keys(self, foreign_keys):
         self.__foreign_keys = foreign_keys
@@ -97,13 +113,15 @@ class Entity:
 
         for r in self.relations():
 
+            print("\t"+str(r))
+
             if(r.first_entity() != self):
                 related_entities.append(r.first_entity() )
 
             if(r.second_entity() != self):
                 related_entities.append(r.second_entity() )
 
-        return related_entities
+        return set(related_entities)
 
     def foreign_keys(self):
         return self.__foreign_keys

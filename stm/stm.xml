@@ -2,6 +2,7 @@
 
 <stm>
 
+
     <transformation type="attribute" id="ChangeAuthorType">
         <action type="retype">
             <entity>post_meta</entity>
@@ -41,6 +42,7 @@
             <type>text</type>
         </action>
     </transformation>
+    
 
     <transformation type="entity" id="CreateComments">
         <action type="create">
@@ -53,6 +55,21 @@
             <entity>comment</entity>
             <attribute>title</attribute>
             <type>varchar(100)</type>
+        </action>
+    </transformation>
+
+    
+
+    <transformation type="relation" id="CreateRelationBetweenCommentAndPost">
+        <action type="create">
+            <relation>
+                <cardinality>one</cardinality>
+                <entity>post</entity>
+            </relation>
+            <relation>
+                <cardinality>many</cardinality>
+                <entity>comment</entity>
+            </relation>
         </action>
     </transformation>
     

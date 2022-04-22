@@ -8,6 +8,7 @@ def test():
     
     stm = SimpleTransformationModel(sdm = sdm, file = "stm/stm.xml")
 
+    '''
     for t in stm.transformations():
         print(t)
 
@@ -16,6 +17,7 @@ def test():
             print("\t"+str(a))
 
         print("\n")
+    '''
 
 
     generator = Generator(stm = stm)

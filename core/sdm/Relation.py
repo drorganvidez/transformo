@@ -1,27 +1,42 @@
 class Relation:
 
-    def __init__(self, item):
+    def __init__(self, item = None, static = False, first_entity = None, second_entity = None, first_entity_cardinality = None, second_entity_cardinality = None):
 
-        self.item = item
+        if not static:
 
-        self.one_1 = None
-        self.one_2 = None
+            self.item = item
 
-        self.many_1 = None
-        self.many_2 = None
+            self.one_1 = None
+            self.one_2 = None
 
-        self.__first_entity = None
-        self.__second_entity = None
+            self.many_1 = None
+            self.many_2 = None
 
-        self.__first_entity_cardinality = None
-        self.__second_entity_cardinality = None
+            self.__first_entity = None
+            self.__second_entity = None
 
-        self.__get_value(item = item, type = "one")
+            self.__first_entity_cardinality = None
+            self.__second_entity_cardinality = None
 
-        self.__get_value(item = item, type = "many")
+            self.__get_value(item = item, type = "one")
 
-        if(not self.__check_max_counter()):
-            raise('There must be exactly two entities involved in a relation')
+            self.__get_value(item = item, type = "many")
+
+            if(not self.__check_max_counter()):
+                raise('There must be exactly two entities involved in a relation')
+
+        else:
+
+            self.__first_entity = first_entity
+            self.__second_entity = second_entity
+
+            self.__first_entity_cardinality = first_entity_cardinality
+            self.__second_entity_cardinality = second_entity_cardinality
+
+            # TODO: asociar los one_1... one_2...
+            self.__get_value_static()
+
+
 
     def __check_max_counter(self):
         counter = 0
@@ -61,6 +76,34 @@ class Relation:
 
             if type == "many":
                 setattr(self, "many_1", item.getElementsByTagName(type)[0].getAttribute('id') )
+
+    def __get_value_static(self):
+
+        self.one_1 = None
+        self.one_2 = None
+
+        self.many_1 = None
+        self.many_2 = None
+
+        if self.__first_entity_cardinality == "one" :
+
+            self.one_1 = self.first_entity().id()
+
+        if self.__first_entity_cardinality == "many" :
+
+            self.many_1 = self.first_entity().id()
+
+        if self.__second_entity_cardinality == "one" :
+
+            self.one_2 = self.second_entity().id()
+
+        if self.__second_entity_cardinality == "many" :
+
+            self.many_2 = self.second_entity().id()
+
+
+
+
 
     def set_entities(self, entities):
         

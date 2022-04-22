@@ -1,4 +1,5 @@
 from typing import Any
+from core.sdm.Relation import Relation
 from core.stm.actions.CreateAttributeAction import CreateAttributeAction
 from core.stm.actions.CreateEntityAction import CreateEntityAction
 from core.stm.actions.DeleteAttributeAction import DeleteAttributeAction
@@ -115,7 +116,26 @@ class Action:
            
 
         if self.__transformation_action == "relation":
-            pass
+
+            if self.__type == "create":
+
+                # basic data
+                relations = self.__item.getElementsByTagName("relation")
+
+                # update relation
+                self.__sdm.add_relation(relations)
+
+                
+
+                '''
+                # basic data
+                element = self.__item.getElementsByTagName("relation")[0]
+
+                relation = Relation(element)
+
+                print(element.getElementsByTagName("one")[0].getAttribute('id') )
+                '''
+                pass
 
 
     def apply(self):

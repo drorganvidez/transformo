@@ -122,8 +122,16 @@ class Generator:
                         template_file = "delete_attribute_action.stub")
 
         if transformation.type() == "relation":
-            #TODO
-            pass
+
+            for a in transformation.actions():
+
+                if a.type() == "create":
+
+                    self.write_transformation(
+                        transformation = transformation,
+                        action = a,
+                        template_file = "create_relation_action.stub")
+                        
 
     def write_transformation(self, transformation, action, template_file):
         template = self.__template_env.get_template(template_file)
