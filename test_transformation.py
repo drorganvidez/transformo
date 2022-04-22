@@ -8,7 +8,7 @@ def test():
     
     stm = SimpleTransformationModel(sdm = sdm, file = "stm/stm.xml")
 
-    scripter = Scripter(stm = stm)
+    scripter = Scripter(stm = stm, output_database = "output_database")
     scripter.generate()
 
     sdm.print()

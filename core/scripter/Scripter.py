@@ -5,15 +5,26 @@ from copy import copy
 
 class Scripter:
 
-    def __init__(self, stm) -> None:
+    def __init__(self, stm, output_database = None) -> None:
         
+        self.__today = datetime.today()
+
         self.__stm = stm
         self.__sdm = SimpleDatabaseModel(self.__stm.sdm().file())
-        self.__filename = "scripts/example.sql"
-        self.__database_name_to = "example"
+        
         self.__database_name_from = "base1"
         templateLoader = jinja2.FileSystemLoader(searchpath = "./core/scripter")
         self.__template_env = jinja2.Environment(loader = templateLoader)
+
+        #output database
+        if output_database is not None:
+            self.__filename = "scripts/" + output_database + ".sql"
+            self.__database_name_to = output_database
+        else :
+            name = self.__database_name_from + "_transformed_" +self.__today.strftime('%Y_%m_%d_%Y_%H_%M_%S')
+            self.__filename = "scripts/" + name + ".sql"
+            self.__database_name_to = name
+
 
     def generate(self):
 
@@ -48,7 +59,7 @@ class Scripter:
 
         template = self.__template_env.get_template("base_sql_script.stub")
 
-        today = datetime.today().strftime('%A, %B %d, %Y %H:%M:%S')
+        today = self.__today.strftime('%A, %B %d, %Y %H:%M:%S')
 
         output_from_parsed_template = template.render(
             database_name_to = self.__database_name_to, 
