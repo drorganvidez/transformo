@@ -93,6 +93,13 @@ class Scripter:
                         action = a,
                         template_file = "create_entity_action.stub")
 
+                if a.type() == "rename":
+
+                    self.write_transformation(
+                        transformation = transformation,
+                        action = a,
+                        template_file = "rename_entity_action.stub")
+
         if transformation.type() == "attribute":
 
             for a in transformation.actions():

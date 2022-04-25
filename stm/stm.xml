@@ -41,7 +41,6 @@
             <type>text</type>
         </action>
     </transformation>
-    
 
     <transformation type="entity" id="CreateComments">
         <action type="create">
@@ -67,6 +66,13 @@
                 <cardinality>many</cardinality>
                 <entity>comment</entity>
             </relation>
+        </action>
+    </transformation>
+
+    <transformation type="entity" id="RenameCommentToReview">
+        <action type="rename">
+            <entity>comment</entity>
+            <rename>review</rename>
         </action>
     </transformation>
     

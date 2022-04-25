@@ -1,0 +1,6 @@
+-- -----------------------------------------------------
+-- Transformation  {{ transformation_name }}
+-- -----------------------------------------------------
+
+RENAME TABLE `{{ database_name_to }}`.`{{ action.entity().id() }}` 
+  TO  `{{ action.rename() }}`;

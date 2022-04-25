@@ -82,6 +82,10 @@ class Entity:
     def add_attribute(self, attribute):
         self.__attributes_items.append(attribute)
 
+    def edit_name(self, rename):
+        self.__id = rename
+        self.__name = rename
+
     def edit_attribute_type(self, attribute_name, retype):
 
         for a in self.__attributes_items:

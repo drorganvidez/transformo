@@ -83,10 +83,15 @@ class SimpleDatabaseModel:
 
         return res
 
+    '''On change properties '''
     def add_entity(self, entity_name):
 
         entity = Entity(static = True, id = entity_name)
         self.entities_items.append(entity)
+
+    def edit_entity_name(self, entity, rename):
+
+        entity.edit_name(rename)
 
     def add_relation(self, relations) -> Relation:
 

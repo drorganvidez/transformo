@@ -1,3 +1,4 @@
+from copy import copy
 from typing import Any
 from core.sdm.Relation import Relation
 from core.stm.actions.CreateAttributeAction import CreateAttributeAction
@@ -6,6 +7,7 @@ from core.stm.actions.CreateRelationAction import CreateRelationAction
 from core.stm.actions.DeleteAttributeAction import DeleteAttributeAction
 from core.stm.actions.MoveAttributeAction import MoveAttributeAction
 from core.stm.actions.RenameAttributeAction import RenameAttributeAction
+from core.stm.actions.RenameEntityAction import RenameEntityAction
 from core.stm.actions.RetypeAttributeAction import RetypeAttributeAction
 
 
@@ -35,9 +37,27 @@ class Action:
 
                 # get entity from SDM
                 entity = self.__sdm.get_entity_by_id(element)
+                original_entity = copy(entity)
 
                 # create action
-                self.__apply = CreateEntityAction(entity = entity)
+                self.__apply = CreateEntityAction(entity = original_entity)
+
+            if self.__type == "rename":
+
+                # basic data
+                element = self.__item.getElementsByTagName("entity")[0].childNodes[0].data
+                rename = self.__item.getElementsByTagName("rename")[0].childNodes[0].data
+                entity = self.__sdm.get_entity_by_id(element)
+
+                original_entity = copy(entity)
+
+                 # update entity
+                self.__sdm.edit_entity_name(entity, rename)
+
+                # create action
+                self.__apply = RenameEntityAction(entity = original_entity, rename = rename)
+
+
 
         if self.__transformation_action == "attribute":
 
@@ -46,6 +66,7 @@ class Action:
                 # basic data
                 element = self.__item.getElementsByTagName("entity")[0].childNodes[0].data
                 entity = self.__sdm.get_entity_by_id(element)
+                original_entity = copy(entity)
                 attribute_name = self.__item.getElementsByTagName("attribute")[0].childNodes[0].data
                 type = self.__item.getElementsByTagName("type")[0].childNodes[0].data
 
@@ -53,7 +74,7 @@ class Action:
                 self.__sdm.add_attribute(entity = entity, attribute_name = attribute_name, attribute_type = type)
 
                 # create action
-                self.__apply = CreateAttributeAction(entity = entity, attribute = attribute_name, type = type)
+                self.__apply = CreateAttributeAction(entity = original_entity, attribute = attribute_name, type = type)
 
 
             if self.__type == "retype":
@@ -61,6 +82,7 @@ class Action:
                 # basic data
                 element = self.__item.getElementsByTagName("entity")[0].childNodes[0].data
                 entity = self.__sdm.get_entity_by_id(element)
+                original_entity = copy(entity)
                 attribute = self.__item.getElementsByTagName("attribute")[0].childNodes[0].data
                 retype = self.__item.getElementsByTagName("retype")[0].childNodes[0].data
 
@@ -68,7 +90,7 @@ class Action:
                 self.__sdm.edit_attribute_type(entity = entity, attribute_name = attribute, retype = retype)
 
                 # create action
-                self.__apply = RetypeAttributeAction(entity = entity, attribute = attribute, retype = retype)
+                self.__apply = RetypeAttributeAction(entity = original_entity, attribute = attribute, retype = retype)
 
             if self.__type == "move":
 
@@ -85,7 +107,7 @@ class Action:
                 self.__sdm.delete_attribute(entity = entity_from, attribute_name = attribute)
 
                 # create action
-                self.__apply = MoveAttributeAction(entity_from = entity_from, entity_to = entity_to, attribute = attribute, type = type)
+                self.__apply = MoveAttributeAction(entity_from = copy(entity_from), entity_to = copy(entity_to), attribute = attribute, type = type)
 
 
             if self.__type == "rename":
@@ -100,7 +122,7 @@ class Action:
                 self.__sdm.edit_attribute_name(entity = entity, attribute_name = attribute, rename = rename)
 
                 # create action
-                self.__apply = RenameAttributeAction(entity = entity, attribute = attribute, rename = rename)
+                self.__apply = RenameAttributeAction(entity = copy(entity), attribute = attribute, rename = rename)
 
             if self.__type == "delete":
 
@@ -113,7 +135,7 @@ class Action:
                 self.__sdm.delete_attribute(entity = entity, attribute_name = attribute)
 
                 # create action
-                self.__apply = DeleteAttributeAction(entity = entity, attribute = attribute)
+                self.__apply = DeleteAttributeAction(entity = copy(entity), attribute = attribute)
            
 
         if self.__transformation_action == "relation":
@@ -127,17 +149,7 @@ class Action:
                 relation = self.__sdm.add_relation(relations)
 
                 # create action
-                self.__apply = CreateRelationAction(first_entity = relation.first_entity(), second_entity = relation.second_entity())
-
-                '''
-                # basic data
-                element = self.__item.getElementsByTagName("relation")[0]
-
-                relation = Relation(element)
-
-                print(element.getElementsByTagName("one")[0].getAttribute('id') )
-                '''
-                pass
+                self.__apply = CreateRelationAction(first_entity = copy(relation.first_entity()), second_entity = copy(relation.second_entity()))
 
 
     def apply(self):
