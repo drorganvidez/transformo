@@ -2,7 +2,6 @@
 
 <stm>
 
-
     <transformation type="attribute" id="ChangeAuthorType">
         <action type="retype">
             <entity>post_meta</entity>
