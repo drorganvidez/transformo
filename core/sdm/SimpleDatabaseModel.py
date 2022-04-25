@@ -93,6 +93,27 @@ class SimpleDatabaseModel:
 
         entity.edit_name(rename)
 
+    def delete_entity(self, entity):
+
+        # delete entities in relations
+        for e in self.entities_items:
+            e.delete_entity_in_relations(entity)
+
+        # delete entity in all entities
+        for i in range(len(self.entities_items)):
+
+            if self.entities_items[i].id() == entity.id():
+                self.entities_items.pop(i)
+                break
+        
+        # delete entities in all relations
+        for i in range(len(self.relations_items)):
+
+            if self.relations_items[i].first_entity().id() == entity.id() or self.relations_items[i].second_entity().id() == entity.id():
+                self.relations_items.pop(i)
+                break
+
+
     def add_relation(self, relations) -> Relation:
 
         first_entity = self.get_entity_by_id(relations[0].getElementsByTagName("entity")[0].childNodes[0].data)

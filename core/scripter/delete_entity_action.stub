@@ -1,0 +1,5 @@
+-- -----------------------------------------------------
+-- Transformation  {{ transformation_name }}
+-- -----------------------------------------------------
+
+DROP TABLE `{{ database_name_to }}`.`{{ action.entity().id() }}`

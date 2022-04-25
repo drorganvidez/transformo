@@ -57,6 +57,14 @@ class Entity:
                 if (r.second_entity().id() == self.id()) :
                     self.add_relation(r)
 
+    def delete_entity_in_relations(self, entity):
+
+        for i in range(len(self.__relations_items)):
+
+            if self.__relations_items[i].first_entity().id() == entity.id() or self.__relations_items[i].second_entity().id() == entity.id():
+                self.__relations_items.pop(i)
+                break
+
 
     def clear_relations(self):
         self.__relations_items = list()

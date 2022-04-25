@@ -5,6 +5,7 @@ from core.stm.actions.CreateAttributeAction import CreateAttributeAction
 from core.stm.actions.CreateEntityAction import CreateEntityAction
 from core.stm.actions.CreateRelationAction import CreateRelationAction
 from core.stm.actions.DeleteAttributeAction import DeleteAttributeAction
+from core.stm.actions.DeleteEntityAction import DeleteEntityAction
 from core.stm.actions.MoveAttributeAction import MoveAttributeAction
 from core.stm.actions.RenameAttributeAction import RenameAttributeAction
 from core.stm.actions.RenameEntityAction import RenameEntityAction
@@ -51,11 +52,24 @@ class Action:
 
                 original_entity = copy(entity)
 
-                 # update entity
+                # update entity
                 self.__sdm.edit_entity_name(entity, rename)
 
                 # create action
                 self.__apply = RenameEntityAction(entity = original_entity, rename = rename)
+
+            if self.__type == "delete":
+
+                # basic data
+                element = self.__item.getElementsByTagName("entity")[0].childNodes[0].data
+                entity = self.__sdm.get_entity_by_id(element)
+                original_entity = copy(entity)
+
+                # update entity
+                self.__sdm.delete_entity(entity)
+
+                # create action
+                self.__apply = DeleteEntityAction(entity = original_entity)
 
 
 

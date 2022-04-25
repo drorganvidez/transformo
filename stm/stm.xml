@@ -75,6 +75,12 @@
             <rename>review</rename>
         </action>
     </transformation>
+
+    <transformation type="entity" id="DeleteReview">
+        <action type="delete">
+            <entity>review</entity>
+        </action>
+    </transformation>
     
 
 </stm>
