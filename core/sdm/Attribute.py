@@ -14,6 +14,9 @@ class Attribute:
             self.__name = attribute_name
             self.__type = attribute_type
 
+    def __eq__(self, __o: object) -> bool:
+        pass
+
     def name(self) -> str:
         return self.__name
 

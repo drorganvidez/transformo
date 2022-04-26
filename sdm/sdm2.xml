@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 
-<sdbm>
+<sdb>
 
     <entity id="post">
         <name>Post</name>
@@ -18,4 +18,33 @@
         </attribute>
     </entity>
 
-</sdbm>
+    <entity id="comment">
+        <name>Comment</name>
+        <attribute>
+            <name>title</name>
+            <type>varchar(100)</type>
+        </attribute>
+        <attribute>
+            <name>comment</name>
+            <type>text</type>
+        </attribute>
+    </entity>
+
+    <entity id="nueva">
+        <name>Nueva</name>
+        <attribute>
+            <name>title</name>
+            <type>varchar(50)</type>
+        </attribute>
+        <attribute>
+            <name>other</name>
+            <type>number</type>
+        </attribute>
+    </entity>
+
+    <relation>
+        <one id="post"></one>
+        <many id="comment"></many>
+    </relation>
+
+</sdb>

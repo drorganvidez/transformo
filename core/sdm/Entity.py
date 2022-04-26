@@ -138,6 +138,52 @@ class Entity:
     def foreign_keys(self):
         return self.__foreign_keys
 
+    def contains_same_attributes(self, entity):
+
+        res = True
+
+        # check attributes list length
+        if(len(self.attributes()) == len(entity.attributes())):
+
+            # sort
+            self.attributes().sort(key = lambda x: x.name())
+            entity.attributes().sort(key = lambda x: x.name())
+
+            for i in range(len(self.attributes())):
+
+                if(self.attributes()[i].name() != entity.attributes()[i].name()):
+
+                    res = False
+                    break
+
+        else:
+
+            res = False
+        
+        return res
+
+        
+
+        print("##############################")
+        print("comparando " + self.name() + " con " + entity.name())
+
+        for attributeB in entity.attributes():
+
+            print("comparando atributo " + attributeB.name())
+
+            for attributeA in self.attributes():
+
+                print("con " + attributeA.name())
+
+                if(attributeB.name() != attributeA.name()):
+
+                    res = False
+                    print("salta")
+
+                print()
+                print()
+
+        return res
 
     def __str__(self) -> str:
         return "Entity: " + self.name() + " (id = \"" + self.id() + "\", number of attributes = " +str(len(self.attributes())) + ")"

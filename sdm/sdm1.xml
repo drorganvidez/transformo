@@ -22,6 +22,26 @@
         </attribute>
     </entity>
 
+    <entity id="vieja">
+        <name>Vieja</name>
+        <attribute>
+            <name>title</name>
+            <type>varchar(50)</type>
+        </attribute>
+        <attribute>
+            <name>other</name>
+            <type>number</type>
+        </attribute>
+    </entity>
+
+    <entity id="borrar">
+        <name>Vieja</name>
+        <attribute>
+            <name>title</name>
+            <type>varchar(50)</type>
+        </attribute>
+    </entity>
+
     <relation>
         <one id="post"></one>
         <many id="post_meta"></many>

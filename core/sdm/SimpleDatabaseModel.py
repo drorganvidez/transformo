@@ -155,6 +155,19 @@ class SimpleDatabaseModel:
 
         entity.delete_attribute_name(attribute_name = attribute_name)
 
+    # methods for actions extraction
+    def contains_entity_by_id(self, entity: Entity):
+
+        res = False
+
+        for e in self.entities():
+
+            if e.id() == entity.id():
+                res = True
+                break
+
+        return res
+
     def file(self) -> str:
         return self.__file
 
@@ -163,7 +176,13 @@ class SimpleDatabaseModel:
 
         print()
 
+        print("########################################")
+
         print(self.__file)
+
+        print("########################################")
+
+        print()
         
         for e in self.entities():
 
@@ -183,8 +202,10 @@ class SimpleDatabaseModel:
 
             print()
 
+        
         print("-- All relations --")
         for r in self.relations():
             print(r)
 
         print()
+        
