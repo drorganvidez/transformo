@@ -15,11 +15,15 @@ class Transformation:
 
         self.__read_actions(item.getElementsByTagName("action"))
 
+    def sdm(self):
+        return self.__sdm
+
     def __read_actions(self, actions):
         
         for a in actions:
 
             action = Action(sdm = self.__sdm, item = a, transformation_action = self.__type)
+            self.__sdm = action.sdm()
 
             self.__actions.append(action)
 

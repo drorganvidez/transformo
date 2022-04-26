@@ -8,12 +8,17 @@ def test():
     
     stm = SimpleTransformationModel(sdm = sdm, file = "stm/stm.xml")
 
+    stm.sdm().print()
+
+
     scripter = Scripter(stm = stm, output_database = "output_database")
     scripter.generate()
 
     scripter.sdm().print()
 
     #sdm.print()
+
+
     
 
 if __name__ == "__main__":

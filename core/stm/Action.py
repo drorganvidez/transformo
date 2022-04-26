@@ -24,6 +24,9 @@ class Action:
         self.__apply : Any = None
         self.__explore()
 
+    def sdm(self):
+        return self.__sdm
+
     def __explore(self):
 
         if self.__transformation_action == "entity":

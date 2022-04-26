@@ -20,6 +20,7 @@ class SimpleTransformationModel:
 
         for i in items:
             transformation = Transformation(sdm = self.__sdm, item = i)
+            self._sdm = transformation.sdm()
             self.__transformations.append(transformation)
 
     def transformations(self):
