@@ -6,7 +6,7 @@ class SimpleTransformationModel:
 
     def __init__(self, sdm, file) -> None:
         
-        self.__sdm = sdm
+        self.__sdm = sdm.copy()
         self.__file = file
 
         doc = minidom.parse(self.__file)

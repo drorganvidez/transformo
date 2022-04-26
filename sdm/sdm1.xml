@@ -35,7 +35,7 @@
     </entity>
 
     <entity id="borrar">
-        <name>Vieja</name>
+        <name>Borrar</name>
         <attribute>
             <name>title</name>
             <type>varchar(50)</type>

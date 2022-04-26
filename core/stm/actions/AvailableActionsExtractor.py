@@ -2,6 +2,7 @@ from numpy import void
 from core.sdm.SimpleDatabaseModel import SimpleDatabaseModel
 from core.stm.AvailableAction import AvailableAction
 from core.stm.actions.CreateEntityAction import CreateEntityAction
+from core.stm.actions.DeleteEntityAction import DeleteEntityAction
 from core.stm.actions.RenameEntityAction import RenameEntityAction
 
 
@@ -15,6 +16,7 @@ class AvailableActionsExtractor:
 
         self.extract_create_entity_actions()
         self.extract_rename_entity_actions()
+        self.extract_delete_entity_actions()
 
     def available_actions(self):
         return self._available_actions
@@ -46,8 +48,13 @@ class AvailableActionsExtractor:
                     action = RenameEntityAction(entity = eA, rename = eB.id())
                     self.add_action(action)
 
-    #def extract_delete_entity_actions(self):
+    def extract_delete_entity_actions(self):
 
+        for e in self._A.entities():
+            if not self._B.contains_entity_by_id(e):
+
+                action = DeleteEntityAction(e)
+                self.add_action(action)
 
 
 
