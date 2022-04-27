@@ -1,4 +1,7 @@
-class RetypeAttributeAction:
+from core.stm.actions.AbstractAction import AbstractAction
+
+
+class RetypeAttributeAction(AbstractAction):
 
     def __init__(self, entity, attribute, retype) -> None:
         
@@ -14,3 +17,6 @@ class RetypeAttributeAction:
 
     def retype(self):
         return self.__retype
+
+    def info(self):
+        return AbstractAction.info(self) + " \n\t retype attribute " + self.attribute() + " to " + self.retype() + " in " + self.entity().name()

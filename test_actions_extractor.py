@@ -1,6 +1,6 @@
 from core.sdm.SimpleDatabaseModel import SimpleDatabaseModel
 from core.stm.AvailableAction import AvailableAction
-from core.stm.actions.AvailableActionsExtractor import AvailableActionsExtractor
+from core.stm.AvailableActionsExtractor import AvailableActionsExtractor
 from core.stm.actions.CreateEntityAction import CreateEntityAction
 
 def test():

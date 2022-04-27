@@ -1,4 +1,7 @@
-class RenameAttributeAction:
+from core.stm.actions.AbstractAction import AbstractAction
+
+
+class RenameAttributeAction(AbstractAction):
 
     def __init__(self, entity, attribute, rename) -> None:
         
@@ -14,3 +17,8 @@ class RenameAttributeAction:
 
     def rename(self):
         return self.__rename
+
+    def info(self):
+        return AbstractAction.info(self) + " \n\t rename attribute " + self.attribute() + " to " + self.rename() + " in " + self.entity().name()
+
+        

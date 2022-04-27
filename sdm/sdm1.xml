@@ -12,6 +12,22 @@
             <name>body</name>
             <type>text</type>
         </attribute>
+        <attribute>
+            <name>date</name>
+            <type>date</type>
+        </attribute>
+        <attribute>
+            <name>renombrar1</name>
+            <type>tipado</type>
+        </attribute>
+        <attribute>
+            <name>renombrar2</name>
+            <type>tipado</type>
+        </attribute>
+        <attribute>
+            <name>nuevo</name>
+            <type>tipado1</type>
+        </attribute>
     </entity>
 
     <entity id="post_meta">

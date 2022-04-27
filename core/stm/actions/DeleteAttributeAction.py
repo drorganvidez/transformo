@@ -1,4 +1,7 @@
-class DeleteAttributeAction:
+from core.stm.actions.AbstractAction import AbstractAction
+
+
+class DeleteAttributeAction(AbstractAction):
 
     def __init__(self, entity, attribute) -> None:
         

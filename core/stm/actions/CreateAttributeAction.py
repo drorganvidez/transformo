@@ -1,16 +1,22 @@
-class CreateAttributeAction:
+from core.stm.actions.AbstractAction import AbstractAction
+
+
+class CreateAttributeAction(AbstractAction):
 
     def __init__(self, entity, attribute, type) -> None:
         
-        self.__entity = entity
-        self.__attribute = attribute
-        self.__type = type
+        self._entity = entity
+        self._attribute = attribute
+        self._type = type
 
     def entity(self):
-        return self.__entity
+        return self._entity
 
-    def attribute(self):
-        return self.__attribute
+    def attribute(self) -> str:
+        return self._attribute
 
     def type(self):
-        return self.__type
+        return self._type
+
+    def info(self):
+        return AbstractAction.info(self) + " \n\t new attribute:  " + self.attribute() + " : " + self.type() + " in entity " + self.entity().name()

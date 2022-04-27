@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 
-<sdb>
+<sdm>
 
     <entity id="post">
         <name>Post</name>
@@ -15,6 +15,14 @@
         <attribute>
             <name>author</name>
             <type>String</type>
+        </attribute>
+        <attribute>
+            <name>renombrado</name>
+            <type>tipado</type>
+        </attribute>
+        <attribute>
+            <name>nuevo</name>
+            <type>tipado2</type>
         </attribute>
     </entity>
 
@@ -47,4 +55,4 @@
         <many id="comment"></many>
     </relation>
 
-</sdb>
+</sdm>

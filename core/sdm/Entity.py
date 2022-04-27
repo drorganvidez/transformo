@@ -162,26 +162,15 @@ class Entity:
         
         return res
 
-        
+    def contains_attribute(self, attribute_name):
 
-        print("##############################")
-        print("comparando " + self.name() + " con " + entity.name())
+        res = False
 
-        for attributeB in entity.attributes():
+        for a in self.attributes():
 
-            print("comparando atributo " + attributeB.name())
-
-            for attributeA in self.attributes():
-
-                print("con " + attributeA.name())
-
-                if(attributeB.name() != attributeA.name()):
-
-                    res = False
-                    print("salta")
-
-                print()
-                print()
+            if a.name() == attribute_name:
+                res = True
+                break
 
         return res
 
