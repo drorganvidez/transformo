@@ -10,7 +10,7 @@ class Scripter:
         self.__today = datetime.today()
 
         self.__stm = stm
-        self.__sdm = stm.sdm()
+        self.__sdm = SimpleDatabaseModel(stm.sdm().file())
         
         self.__database_name_from = "base1"
         templateLoader = jinja2.FileSystemLoader(searchpath = "./core/scripter")

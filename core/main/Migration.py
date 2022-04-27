@@ -13,7 +13,7 @@ class Migration:
 
         self._A = sdm_source
         self._B = sdm_target
-        self._originalA = SimpleDatabaseModel(self._A.file())
+        self._originalA = SimpleDatabaseModel(sdm_source.file())
 
         self._extractor = AvailableActionsExtractor(sdm_source = self._A, sdm_target = self._B)
 
@@ -97,6 +97,6 @@ class Migration:
 
     def _generate_sql_script(self):
 
-        stm = SimpleTransformationModel(sdm = self._originalA , file = "stm/all.xml")
+        stm = SimpleTransformationModel(sdm = SimpleDatabaseModel(self._A.file()) , file = "stm/all.xml")
         scripter = Scripter(stm = stm, output_database = self.__output_database)
         scripter.generate()
