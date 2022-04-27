@@ -24,9 +24,6 @@ class SimpleDatabaseModel:
 
         self.detect_foreign_keys()
 
-    def copy(self):
-        return SimpleDatabaseModel(self.__file)
-
     def __read_entities(self, doc) -> None:
         items = doc.getElementsByTagName('entity')
 
@@ -190,7 +187,7 @@ class SimpleDatabaseModel:
 
         print("########################################")
 
-        print(self.__file)
+        print("original SDM file: " + self.__file)
 
         print("########################################")
 

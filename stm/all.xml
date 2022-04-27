@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 
 <stm>
+    <transformation type="entity" id="CreateEntityAction">
+        <action type="create">
+            <entity>comment</entity>
+        </action>
+    </transformation>
 
     <transformation type="entity" id="CreateEntityAction">
         <action type="create">
             <entity>comment2</entity>
         </action>
     </transformation>
-
 </stm>

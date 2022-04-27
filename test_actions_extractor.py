@@ -7,7 +7,7 @@ def test():
     A = SimpleDatabaseModel('sdm/sdm1.xml')
     B = SimpleDatabaseModel('sdm/sdm2.xml')
 
-    migration = Migration(A, B)
+    migration = Migration(A, B, output_database = "basemigrada")
     migration.migrate()
     
 

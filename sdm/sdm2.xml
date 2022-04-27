@@ -30,6 +30,14 @@
         </attribute>
     </entity>
 
+    <entity id="comment2">
+        <name>comment</name>
+        <attribute>
+            <name>title</name>
+            <type>varchar(25)</type>
+        </attribute>
+    </entity>
+
     <relation>
         <one id="post"></one>
         <many id="post_meta"></many>
