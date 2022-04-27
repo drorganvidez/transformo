@@ -1,4 +1,7 @@
-class MoveAttributeAction:
+from core.stm.actions.AbstractAction import AbstractAction
+
+
+class MoveAttributeAction(AbstractAction):
 
     def __init__(self, entity_from, entity_to, attribute, type) -> None:
         
@@ -18,3 +21,6 @@ class MoveAttributeAction:
 
     def type(self):
         return self.__type
+
+    def info(self):
+        return AbstractAction.info(self) + " \n\t move attribute " + self.attribute() + " : " + self.type() + ", from " + self.entity_from().name() + " to " + self.entity_to().name()

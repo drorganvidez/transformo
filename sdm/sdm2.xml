@@ -24,6 +24,10 @@
             <name>nuevo</name>
             <type>tipado2</type>
         </attribute>
+        <attribute>
+            <name>mover</name>
+            <type>tipo</type>
+        </attribute>
     </entity>
 
     <entity id="comment">

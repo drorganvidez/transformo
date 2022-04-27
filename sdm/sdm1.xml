@@ -28,6 +28,10 @@
             <name>nuevo</name>
             <type>tipado1</type>
         </attribute>
+        <attribute>
+            <name>eliminar</name>
+            <type>tipado</type>
+        </attribute>
     </entity>
 
     <entity id="post_meta">
@@ -55,6 +59,14 @@
         <attribute>
             <name>title</name>
             <type>varchar(50)</type>
+        </attribute>
+    </entity>
+
+    <entity id="entidaddeprueba1">
+        <name>Entidaddeprueba1</name>
+        <attribute>
+            <name>mover</name>
+            <type>tipo</type>
         </attribute>
     </entity>
 

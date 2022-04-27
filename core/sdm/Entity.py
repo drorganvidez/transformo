@@ -162,13 +162,25 @@ class Entity:
         
         return res
 
-    def contains_attribute(self, attribute_name):
+    def contains_attribute_by_name(self, attribute_name):
 
         res = False
 
         for a in self.attributes():
 
             if a.name() == attribute_name:
+                res = True
+                break
+
+        return res
+
+    def contains_attribute(self, attribute):
+
+        res = False
+
+        for a in self.attributes():
+
+            if a.name() == attribute.name() and a.type() == attribute.type():
                 res = True
                 break
 

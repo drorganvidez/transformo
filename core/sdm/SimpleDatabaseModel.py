@@ -86,6 +86,15 @@ class SimpleDatabaseModel:
 
         return res
 
+    def contains_entity(self, entity) -> bool:
+
+        res = False
+
+        if(self.get_entity_by_id(entity.id()) is not None):
+            res = True
+
+        return res
+
     '''On change properties '''
     def add_entity(self, entity_name):
 

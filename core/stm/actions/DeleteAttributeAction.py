@@ -13,3 +13,6 @@ class DeleteAttributeAction(AbstractAction):
 
     def attribute(self):
         return self.__attribute
+
+    def info(self):
+        return AbstractAction.info(self) + " \n\t delete attribute " + self.attribute() + " from " + self.entity().name()

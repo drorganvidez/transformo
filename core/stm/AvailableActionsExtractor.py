@@ -4,6 +4,7 @@ from core.sdm.SimpleDatabaseModel import SimpleDatabaseModel
 from core.stm.AvailableAction import AvailableAction
 from core.stm.actions.CreateEntityAction import CreateEntityAction
 from core.stm.actions.DeleteEntityAction import DeleteEntityAction
+from core.stm.actions.MoveAttributeAction import MoveAttributeAction
 from core.stm.actions.RenameAttributeAction import RenameAttributeAction
 from core.stm.actions.RenameEntityAction import RenameEntityAction
 from core.stm.actions.RetypeAttributeAction import RetypeAttributeAction
@@ -26,6 +27,8 @@ class AvailableActionsExtractor:
         self.extract_create_attribute_actions()
         self.extract_rename_attribute_actions()
         self.extract_retype_attribute_actions()
+        self.extract_move_attribute_actions()
+        self.extract_delete_attribute_actions()
 
     def available_actions(self):
         return self._available_actions
@@ -75,7 +78,7 @@ class AvailableActionsExtractor:
 
                     for attribute in eB.attributes():
 
-                        if not eA.contains_attribute(attribute.name()):
+                        if not eA.contains_attribute_by_name(attribute.name()):
 
                             action = CreateAttributeAction(entity = eB, attribute = attribute.name(), type = attribute.type())
                             self.add_action(action)
@@ -90,7 +93,7 @@ class AvailableActionsExtractor:
 
                     for attB in eB.attributes():
 
-                        if not eA.contains_attribute(attB.name()):
+                        if not eA.contains_attribute_by_name(attB.name()):
 
                             for attA in eA.attributes():
 
@@ -110,7 +113,7 @@ class AvailableActionsExtractor:
 
                     for attB in eB.attributes():
 
-                        if eA.contains_attribute(attB.name()):
+                        if eA.contains_attribute_by_name(attB.name()):
 
                             for attA in eA.attributes():
 
@@ -119,13 +122,38 @@ class AvailableActionsExtractor:
                                     action = RetypeAttributeAction(entity = eB, attribute = attB.name(), retype = attB.type())
                                     self.add_action(action)
 
-        pass
 
     def extract_move_attribute_actions(self):
-        pass
+        
+        for eA in self._A.entities():
+
+            for eB in self._B.entities():
+
+                if self._A.contains_entity(eB):
+
+                    for attA in eA.attributes():
+
+                        if eB.contains_attribute(attA):
+
+                            action = MoveAttributeAction(entity_from = eA, entity_to = eB, attribute = attA.name(), type = attA.type())
+                            self.add_action(action)
+
 
     def extract_delete_attribute_actions(self):
-        pass
+
+        for eA in self._A.entities():
+
+            for eB in self._B.entities():
+
+                if(eA.id() == eB.id()):
+
+                    for attA in eA.attributes():
+
+                        if not eB.contains_attribute(attA):
+
+                            action = DeleteAttributeAction(entity = eB, attribute = attA.name())
+                            self.add_action(action)
+
 
     def extract_move_relation_actions(self):
         pass
