@@ -12,26 +12,6 @@
             <name>body</name>
             <type>text</type>
         </attribute>
-        <attribute>
-            <name>date</name>
-            <type>date</type>
-        </attribute>
-        <attribute>
-            <name>renombrar1</name>
-            <type>tipado</type>
-        </attribute>
-        <attribute>
-            <name>renombrar2</name>
-            <type>tipado</type>
-        </attribute>
-        <attribute>
-            <name>nuevo</name>
-            <type>tipado1</type>
-        </attribute>
-        <attribute>
-            <name>eliminar</name>
-            <type>tipado</type>
-        </attribute>
     </entity>
 
     <entity id="post_meta">
@@ -39,34 +19,6 @@
         <attribute>
             <name>author</name>
             <type>varchar(25)</type>
-        </attribute>
-    </entity>
-
-    <entity id="vieja">
-        <name>Vieja</name>
-        <attribute>
-            <name>title</name>
-            <type>varchar(50)</type>
-        </attribute>
-        <attribute>
-            <name>other</name>
-            <type>number</type>
-        </attribute>
-    </entity>
-
-    <entity id="borrar">
-        <name>Borrar</name>
-        <attribute>
-            <name>title</name>
-            <type>varchar(50)</type>
-        </attribute>
-    </entity>
-
-    <entity id="entidaddeprueba1">
-        <name>Entidaddeprueba1</name>
-        <attribute>
-            <name>mover</name>
-            <type>tipo</type>
         </attribute>
     </entity>
 

@@ -6,57 +6,33 @@
         <name>Post</name>
         <attribute>
             <name>title</name>
-            <type>String</type>
+            <type>varchar(25)</type>
         </attribute>
         <attribute>
             <name>body</name>
-            <type>String</type>
-        </attribute>
-        <attribute>
-            <name>author</name>
-            <type>String</type>
-        </attribute>
-        <attribute>
-            <name>renombrado</name>
-            <type>tipado</type>
-        </attribute>
-        <attribute>
-            <name>nuevo</name>
-            <type>tipado2</type>
-        </attribute>
-        <attribute>
-            <name>mover</name>
-            <type>tipo</type>
-        </attribute>
-    </entity>
-
-    <entity id="comment">
-        <name>Comment</name>
-        <attribute>
-            <name>title</name>
-            <type>varchar(100)</type>
-        </attribute>
-        <attribute>
-            <name>comment</name>
             <type>text</type>
         </attribute>
     </entity>
 
-    <entity id="nueva">
-        <name>Nueva</name>
+    <entity id="post_meta">
+        <name>PostMeta</name>
+        <attribute>
+            <name>author</name>
+            <type>varchar(25)</type>
+        </attribute>
+    </entity>
+
+    <entity id="comment">
+        <name>comment</name>
         <attribute>
             <name>title</name>
-            <type>varchar(50)</type>
-        </attribute>
-        <attribute>
-            <name>other</name>
-            <type>number</type>
+            <type>varchar(25)</type>
         </attribute>
     </entity>
 
     <relation>
         <one id="post"></one>
-        <many id="comment"></many>
+        <many id="post_meta"></many>
     </relation>
 
 </sdm>

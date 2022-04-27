@@ -30,6 +30,12 @@ class AvailableActionsExtractor:
         self.extract_move_attribute_actions()
         self.extract_delete_attribute_actions()
 
+    def A(self):
+        return self._A
+    
+    def B(self):
+        return self._B
+
     def available_actions(self):
         return self._available_actions
 
@@ -161,6 +167,7 @@ class AvailableActionsExtractor:
 
     def print(self):
 
+        print()
         print("########################################")
         print("Available actions")
         print("########################################")
@@ -169,7 +176,7 @@ class AvailableActionsExtractor:
         print(str(len(self._available_actions)) + " available actions")
         print()
 
-        for a in self._available_actions:
+        for i in range(len(self._available_actions)):
 
-            print("-> " + str(a))
+            print(str(i) + " -> " + str(self._available_actions[i]))
             print()
