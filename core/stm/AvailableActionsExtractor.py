@@ -61,10 +61,12 @@ class AvailableActionsExtractor:
 
             for eA in self._A.entities():
 
-                if(eA.contains_same_attributes(eB)):
+                if not eA.id() == eB.id():
 
-                    action = RenameEntityAction(entity = eA, rename = eB.id())
-                    self.add_action(action)
+                    if(eA.contains_same_attributes(eB)):
+
+                        action = RenameEntityAction(entity = eA, rename = eB.id())
+                        self.add_action(action)
 
     def extract_delete_entity_actions(self):
 
@@ -135,14 +137,16 @@ class AvailableActionsExtractor:
 
             for eB in self._B.entities():
 
-                if self._A.contains_entity(eB):
+                if not eA.id() == eB.id():
 
-                    for attA in eA.attributes():
+                    if self._A.contains_entity(eB):
 
-                        if eB.contains_attribute(attA):
+                        for attA in eA.attributes():
 
-                            action = MoveAttributeAction(entity_from = eA, entity_to = eB, attribute = attA.name(), type = attA.type())
-                            self.add_action(action)
+                            if eB.contains_attribute(attA):
+
+                                action = MoveAttributeAction(entity_from = eA, entity_to = eB, attribute = attA.name(), type = attA.type())
+                                self.add_action(action)
 
 
     def extract_delete_attribute_actions(self):

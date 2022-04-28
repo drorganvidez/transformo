@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 
 <stm>
-    <transformation type="entity" id="CreateEntityAction">
-        <action type="create">
-            <entity>comment</entity>
-        </action>
-    </transformation>
-
-    <transformation type="entity" id="CreateEntityAction">
-        <action type="create">
-            <entity>comment2</entity>
+    <transformation type="attribute" id="MoveAttributeAction">
+        <action type="move">
+            <from>post</from>
+            <to>post_meta</to>
+            <attribute>attribute_move</attribute>
+            <type>text</type>
         </action>
     </transformation>
 </stm>

@@ -21,4 +21,8 @@ class RenameAttributeAction(AbstractAction):
     def info(self):
         return AbstractAction.info(self) + " \n\t rename attribute " + self.attribute() + " to " + self.rename() + " in " + self.entity().name()
 
-        
+    def transformation_type(self):
+        return "attribute"
+
+    def action_type(self):
+        return "rename"

@@ -20,3 +20,9 @@ class RetypeAttributeAction(AbstractAction):
 
     def info(self):
         return AbstractAction.info(self) + " \n\t retype attribute " + self.attribute() + " to " + self.retype() + " in " + self.entity().name()
+
+    def transformation_type(self):
+        return "attribute"
+
+    def action_type(self):
+        return "retype"

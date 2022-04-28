@@ -20,6 +20,10 @@
             <name>author</name>
             <type>varchar(25)</type>
         </attribute>
+        <attribute>
+            <name>attribute_move</name>
+            <type>text</type>
+        </attribute>
     </entity>
 
     <entity id="comment">
@@ -33,8 +37,8 @@
     <entity id="comment2">
         <name>comment</name>
         <attribute>
-            <name>title</name>
-            <type>varchar(25)</type>
+            <name>author2</name>
+            <type>tipo1</type>
         </attribute>
     </entity>
 

@@ -50,6 +50,7 @@ class Migration:
         print(selected_action)
 
         # write transformation in file of type STM
+        print(selected_action.action().transformation_type())
         stm_file = self.write_transformation(selected_action)
         stm = SimpleTransformationModel(sdm = self._A, file = stm_file)
 

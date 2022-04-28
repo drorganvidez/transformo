@@ -1,0 +1,8 @@
+
+    <transformation type="{{ action.transformation_type()}}" id="{{ action.__class__.__name__ }}">
+        <action type="{{ action.action_type()}}">
+            <entity>{{ action.entity().id() }}</entity>
+            <attribute>{{ action.attribute() }}</attribute>
+            <retype>{{ action.retype() }}</retype>
+        </action>
+    </transformation>
