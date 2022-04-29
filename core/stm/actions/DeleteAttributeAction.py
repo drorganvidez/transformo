@@ -21,4 +21,4 @@ class DeleteAttributeAction(AbstractAction):
         return "attribute"
 
     def action_type(self):
-        return "delete "
+        return "delete"

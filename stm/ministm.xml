@@ -2,12 +2,9 @@
 
 <stm>
 
-    <transformation type="attribute" id="MoveAttributeAction">
-        <action type="move">
-            <from>post</from>
-            <to>post_meta</to>
-            <attribute>attribute_move</attribute>
-            <type>text</type>
+    <transformation type="entity" id="DeleteEntityAction">
+        <action type="delete">
+            <entity>borrar</entity>
         </action>
     </transformation>
 

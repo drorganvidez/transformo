@@ -34,39 +34,46 @@ class TransformationWriter:
         if(self.__first_write):
             self.clear(self.__filename_all_transformation)
 
-        # write transformation of type ENTITY
-        if self._available_action.action().transformation_type() == "entity":
+        transformation_type = self._available_action.action().transformation_type()
+        action_type = self._available_action.action().action_type()
 
-            if self._available_action.action().action_type() == "create":
+        # write transformation of type ENTITY
+        if transformation_type == "entity":
+
+            if action_type == "create":
 
                 self._write_in_template("create_entity_action.stub")
 
-            if self._available_action.action().action_type() == "rename":
+            if action_type == "rename":
 
                 self._write_in_template("rename_entity_action.stub")
 
-            if self._available_action.action().action_type() == "delete":
+            if action_type == "delete":
 
                 self._write_in_template("delete_entity_action.stub")
 
         # write transformation of type ATTRIBUTE
-        if self._available_action.action().transformation_type() == "attribute":
+        if transformation_type == "attribute":
 
-            if self._available_action.action().action_type() == "create":
+            if action_type == "create":
 
                 self._write_in_template("create_attribute_action.stub")
 
-            if self._available_action.action().action_type() == "rename":
+            if action_type == "rename":
 
                 self._write_in_template("rename_attribute_action.stub")
 
-            if self._available_action.action().action_type() == "retype":
+            if action_type == "retype":
 
                 self._write_in_template("retype_attribute_action.stub")
 
-            if self._available_action.action().action_type() == "move":
+            if action_type == "move":
 
                 self._write_in_template("move_attribute_action.stub")
+
+            if action_type == "delete":
+
+                self._write_in_template("delete_attribute_action.stub")
 
 
     def close(self):
