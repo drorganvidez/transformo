@@ -6,4 +6,20 @@
             <entity>post_meta</entity>
         </action>
     </transformation>
+
+    <transformation type="attribute" id="RetypeAttributeAction">
+        <action type="retype">
+            <entity>post</entity>
+            <attribute>body</attribute>
+            <retype>varchar(100)</retype>
+        </action>
+    </transformation>
+
+    <transformation type="attribute" id="CreateAttributeAction">
+        <action type="create">
+            <entity>post</entity>
+            <attribute>author</attribute>
+            <type>varchar(25)</type>
+        </action>
+    </transformation>
 </stm>

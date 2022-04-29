@@ -13,7 +13,7 @@ class TransformationWriter:
 
         self.__filename = "stm/ministm.xml"
 
-        self.__filename_all_transformation = "stm/" + transformation_file
+        self.__filename_all_transformation = "stm/all.xml"
         self.__first_write = first_write
 
         self._single = single

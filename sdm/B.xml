@@ -10,7 +10,7 @@
         </attribute>
         <attribute>
             <name>body</name>
-            <type>text</type>
+            <type>varchar(100)</type>
         </attribute>
         <attribute>
             <name>attribute_move</name>

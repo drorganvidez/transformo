@@ -123,12 +123,13 @@ class AvailableActionsExtractor:
 
                         if eA.contains_attribute_by_name(attB.name()):
 
-                            for attA in eA.attributes():
+                            attA = eA.get_attribute_by_name(attB.name())
 
-                                if(attA.name() == attB.name()):
+                            if not attA.type() == attB.type():
 
-                                    action = RetypeAttributeAction(entity = eB, attribute = attB.name(), retype = attB.type())
-                                    self.add_action(action)
+                                action = RetypeAttributeAction(entity = eB, attribute = attB.name(), retype = attB.type())
+                                self.add_action(action)
+
 
 
     def extract_move_attribute_actions(self):
