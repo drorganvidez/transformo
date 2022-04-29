@@ -2,11 +2,9 @@
 
 <stm>
 
-    <transformation type="attribute" id="CreateAttributeAction">
-        <action type="create">
-            <entity>post</entity>
-            <attribute>author</attribute>
-            <type>varchar(25)</type>
+    <transformation type="entity" id="DeleteEntityAction">
+        <action type="delete">
+            <entity>post_meta</entity>
         </action>
     </transformation>
 

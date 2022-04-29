@@ -18,6 +18,15 @@ class AvailableActionsExtractor:
         self._B = sdm_target
         self._available_actions : list[AvailableAction] = list()
 
+
+    def A(self):
+        return self._A
+    
+    def B(self):
+        return self._B
+
+    def available_actions(self):
+
         # extract entity actions
         self.extract_create_entity_actions()
         self.extract_rename_entity_actions()
@@ -30,13 +39,29 @@ class AvailableActionsExtractor:
         self.extract_move_attribute_actions()
         self.extract_delete_attribute_actions()
 
-    def A(self):
-        return self._A
-    
-    def B(self):
-        return self._B
+        return self._available_actions
 
-    def available_actions(self):
+    def first_priority(self):
+
+        self.extract_rename_entity_actions()
+        self.extract_rename_attribute_actions()
+        self.extract_retype_attribute_actions()
+        self.extract_move_attribute_actions()
+
+        return self._available_actions
+
+    def second_priority(self):
+
+        self.extract_create_entity_actions()
+        self.extract_create_attribute_actions()
+
+        return self._available_actions
+
+    def third_priority(self):
+
+        self.extract_delete_entity_actions()
+        self.extract_delete_attribute_actions()
+        
         return self._available_actions
 
     def add_action(self, action : any):

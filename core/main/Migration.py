@@ -86,6 +86,15 @@ class Migration:
         print("######################")
         print()
 
+        # available actions
+        available_actions = self._extractor.first_priority()
+
+        if len(available_actions) == 0:
+            available_actions = self._extractor.second_priority()
+
+        if len(available_actions) == 0:
+            available_actions = self._extractor.third_priority()
+
         if heuristic_number == 0:
 
             print("Found a solution!")
@@ -94,7 +103,7 @@ class Migration:
             self._generate_sql_script()
             return self.finish()
 
-        for available_action in self._extractor.available_actions():
+        for available_action in available_actions:
 
             stm_file = self.write_single_transformation(available_action)
             stm = SimpleTransformationModel(sdm = copy.deepcopy(self._A), file = stm_file)
