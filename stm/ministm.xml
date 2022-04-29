@@ -4,7 +4,7 @@
 
     <transformation type="entity" id="DeleteEntityAction">
         <action type="delete">
-            <entity>borrar</entity>
+            <entity>post_meta</entity>
         </action>
     </transformation>
 

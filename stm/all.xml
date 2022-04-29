@@ -1,23 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 
 <stm>
-    <transformation type="attribute" id="DeleteAttributeAction">
-        <action type="delete">
-            <entity>comment2</entity>
-            <attribute>author1</attribute>
-        </action>
-    </transformation>
-
-    <transformation type="attribute" id="DeleteAttributeAction">
-        <action type="delete">
-            <entity>post</entity>
-            <attribute>attribute_move</attribute>
-        </action>
-    </transformation>
-
     <transformation type="entity" id="DeleteEntityAction">
         <action type="delete">
-            <entity>borrar</entity>
+            <entity>post_meta</entity>
         </action>
     </transformation>
 </stm>

@@ -1,6 +1,7 @@
+from core.heuristic.Heuristic import Heuristic
 from core.main.Migration import Migration
 from core.sdm.SimpleDatabaseModel import SimpleDatabaseModel
-from core.stm.AvailableActionsExtractor import AvailableActionsExtractor
+
 
 def test():
 
@@ -8,7 +9,7 @@ def test():
     B = SimpleDatabaseModel('sdm/B.xml')
 
     migration = Migration(A, B, output_database_name = "basemigrada")
-    migration.migrate()
+    migration.heuristic_migrate()
     
 
 if __name__ == "__main__":

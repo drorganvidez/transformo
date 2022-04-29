@@ -186,5 +186,17 @@ class Entity:
 
         return res
 
+    def get_attribute_by_name(self, attribute_name):
+
+        res = None
+
+        for a in self.attributes():
+
+            if a.name() == attribute_name:
+                res = a
+                break
+        
+        return res
+
     def __str__(self) -> str:
         return "Entity: " + self.name() + " (id = \"" + self.id() + "\", number of attributes = " +str(len(self.attributes())) + ")"
