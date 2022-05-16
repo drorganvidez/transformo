@@ -29,6 +29,8 @@ class Migration:
         # show current source SDM
         self._extractor.A().print()
 
+        self._extractor.extract_available_actions()
+
         # show available actions
         self._extractor.print()
 

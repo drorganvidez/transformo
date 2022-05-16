@@ -25,6 +25,12 @@ class AvailableActionsExtractor:
     def B(self):
         return self._B
 
+    def extract_available_actions(self):
+
+        self.first_priority()
+        self.second_priority()
+        self.third_priority()
+
     def available_actions(self):
 
         # extract entity actions
